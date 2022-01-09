@@ -1,14 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import InfoSection from '../components/InfoSection';
-import Landing from './landing';
-import Community from './community';
-import Wallet from './wallet';
-import Margin from './margin';
-import Footer from '../components/Footer';
+import SupportSection from '../components/SupportSection';
+import DetailSection from '../components/DetailSection';
 
 const Home = () => {
   return (
@@ -17,6 +14,8 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <InfoSection />
+      <SupportSection />
+      <DetailSection />
     </Router>
   );
 }

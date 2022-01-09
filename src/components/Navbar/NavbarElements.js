@@ -4,8 +4,8 @@ import { Link as LinkScroll } from 'react-scroll';
 
 export const Nav = styled.nav`
   background: #10122b;
-  height: 86px;
-  margin-top: -86px;
+  height: 70px;
+  margin-top: -70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +24,8 @@ export const NavbarContainer = styled.div`
   height: 80px;
   z-index: 1;
   width: 100%;
-  padding: 0 24px;
-  max-width: 1420px;
+  padding: 0 70px;
+  max-width: 1380px;
 `;
 
 export const NavLogo = styled(LinkR)`
@@ -75,7 +75,8 @@ export const NavLinks = styled(LinkScroll)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin: 0 1.6rem;
+  font-size: 14px;
+  margin: 0 1.35rem;
   height: 100%;
   cursor: pointer;
 
@@ -91,7 +92,6 @@ export const NavBtn = styled.nav`
   @media screen and (max-width: 760px) {
     display: none;
   }
-
 `
 
 export const NavBtnLink = styled(LinkR)`
@@ -99,7 +99,7 @@ export const NavBtnLink = styled(LinkR)`
   white-space: nowrap;
   padding: 13px 20px;
   color: #FCFCFD;
-  font-size: 16px;
+  font-size: 14px;
   font-family: sans-serif;
   outline: none;
   border: none;
@@ -127,8 +127,8 @@ export const VLine = styled.div`
   height: 42px;
   display: flex;
   align-self: center;
-  margin-left: 2.8rem;
-  margin-right: 1.2rem;
+  margin-left: 2.7rem;
+  margin-right: 1.35rem;
 
   @media screen and (max-width: 760px) {
      display: none;
@@ -136,7 +136,7 @@ export const VLine = styled.div`
 `
 
 export const NavDropBtn = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   color: #FCFCFD;
   margin-right: 40px;
 `
