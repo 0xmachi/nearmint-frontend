@@ -6,6 +6,7 @@ import HeroSection from '../components/HeroSection';
 import InfoSection from '../components/InfoSection';
 import SupportSection from '../components/SupportSection';
 import DetailSection from '../components/DetailSection';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <InfoSection />
       <SupportSection />
       <DetailSection />
+      <Footer />
     </Router>
   );
 }

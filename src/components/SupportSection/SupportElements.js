@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SupportContainer = styled.div`
-  background: #10122b;
+  background: rgba(19, 21, 48, 1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,5 +21,14 @@ export const SponserImg = styled.img`
 `
 
 export const DecorationImg = styled.img`
-  max-width: 100vw;
+  overflow: hidden;
+  width: 100vw;
+
+  @media screen and (max-width: 1000px) {
+    width: 1000px;
+  }
+
+  @media screen and (min-width: 1460px) {
+    width: 1380px;
+  }
 `

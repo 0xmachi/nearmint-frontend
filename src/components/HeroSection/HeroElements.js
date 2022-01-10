@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link as LinkR } from 'react-router-dom';
 
 export const HeroContainer = styled.div`
-  background: #10122b;
+  background: rgba(19, 21, 48, 1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@ export const HeroWrapper = styled.div`
   max-width: 1380px;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
+  /* margin-top: 70px; */
   padding: 0 70px;
 
   /* @media screen and (min-width: 1400px) {
@@ -72,16 +72,6 @@ export const BtnWrap = styled.div`
   justify-content: flex-start;
 `;
 
-export const ImgWrap = styled.div`
-`
-
-export const Img = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0 0 10px 0;
-  padding-right: 0;
-`
-
 export const Button = styled(LinkR)`
   background: rgba(0, 0, 0, 0);
   padding: 16px 28px;
@@ -99,4 +89,14 @@ export const Button = styled(LinkR)`
     background: white;
     color: #010606;
   }
+`
+
+export const ImgWrap = styled.div`
+`
+
+export const Img = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 0 10px 0;
+  padding-right: 0;
 `

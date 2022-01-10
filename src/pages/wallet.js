@@ -10,5 +10,5 @@ const Wallet = () => {
     </Container>
   );
 };
-  
+
 export default Wallet;
