@@ -2,10 +2,14 @@ import styled from 'styled-components';
 import { Link as LinkR } from 'react-router-dom';
 
 export const DetailContainer = styled.div`
-  background: rgba(19, 21, 48, 1);
+  background: rgba(19, 21, 48, 0);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 900px) {
+    margin: 0 30px;
+  }
 `
 export const DetailWrapper = styled.div`
   display: flex;
@@ -17,6 +21,14 @@ export const DetailWrapper = styled.div`
 
 export const Img = styled.img`
   max-width: 1151px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 800px;
+  }
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `
 
 export const TextWrapper = styled.div`
@@ -24,6 +36,18 @@ export const TextWrapper = styled.div`
   position: absolute;
   right: 100px;
   bottom: 120px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 520px;
+    right: 30px;
+    bottom: 80px;
+  }
+
+  @media screen and (max-width: 900px) {
+    position: static;
+    display: flex;
+    flex-direction: column
+  }
 `;
 
 export const Heading = styled.p`
@@ -34,6 +58,12 @@ export const Heading = styled.p`
   line-height: 80px;
   margin-bottom: 30px;
   margin-top: 0;
+
+  @media screen and (max-width: 1300px) {
+    font-size: 30px;
+    line-height: 48px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const BtnWrap = styled.div`

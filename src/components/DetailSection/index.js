@@ -1,5 +1,5 @@
 import React from "react";
-import BackImg from "../../images/backImage.png";
+import BackImg from "../../images/boxImage.png";
 
 import {
   DetailContainer,

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link as LinkR } from 'react-router-dom';
 
 export const HeroContainer = styled.div`
-  background: rgba(19, 21, 48, 1);
+  background: rgba(19, 21, 48, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,9 +33,14 @@ export const HeroWrapper = styled.div`
 export const HeroRow = styled.div`
   display: grid;
   width: 100%;
+  height: 700px;
   grid-auto-columns: minmax(2, 1fr);
   align-items: center;
   grid-template-areas: 'col1 col2';
+
+  @media screen and (max-width: 800px) {
+    grid-template-areas: 'col2' 'col1';
+  }
 `;
 
 export const Column1 = styled.div`
