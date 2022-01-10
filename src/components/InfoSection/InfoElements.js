@@ -84,13 +84,6 @@ export const Description = styled.p`
   margin: 0;
 `;
 
-
-export const BtnWrap = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 15px;
-`;
-
 export const ImgWrap = styled.div`
   max-width: 420px;
 `;
@@ -100,6 +93,12 @@ export const Img = styled.img`
   width: 100%;
   margin: 0 0 10px 0;
   padding-right: 0;
+`;
+
+export const BtnWrap = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
 `;
 
 export const Button = styled(LinkR)`

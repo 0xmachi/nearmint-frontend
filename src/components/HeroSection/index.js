@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactLogo from '../../images/heroLogo.png';
+import ButtonImg from '../../images/button.png';
+
 
 import {
   HeroContainer,
@@ -27,7 +29,7 @@ const HeroSection = () => {
                 <Heading>Protocol Treasury Fundraising on NEAR</Heading>
                 <SubTitle>NEARmint is bringing protocol-owned-liquidity (PoL) to the NEAR ecosystem by hosting Community Farming events.</SubTitle>
                 <BtnWrap>
-                  <Button>Get started now</Button>
+                  <Button src={ButtonImg} alt="Button"/>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
