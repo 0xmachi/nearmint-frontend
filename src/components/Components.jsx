@@ -12,7 +12,7 @@ const handleColorType = color => {
 };
 
 export const Container = styled.section`
-  background: ${props => props.black ? "#0F1010" : "url('https://s3-alpha-sig.figma.com/img/b08f/00ef/91e8575454d535850cb179707ffb4619?Expires=1636934400&Signature=SDLYDGXpWEiV704j9lfXFYT4c5zjVFLKTU5~-iNnmOWsnoXqR2denUAagUx5oG88pxLQvUedGILdWPDuk09ttewchzAbGTesQUPCOA6h62vXgUPKGGkmq4bskq5p4TuYK46be1MJLNXwFAZK0bW~q5MuDeBGr8zWQTFDkZwA3UhU11yZhJqOXVTi8bkkUYxmMErodzMqxQ8bXkprrT~VUXOUqsAQcAx~iGPGJco0JFR-Fu2musHtsqMy3Nr~KzmzCqbk5Es37AXyHCC5ECGq56phmKrd18MCvwKBLQSTqpi1J2Q0NE5OSNuQlRqXtmQPrcIsIqLFwII3Hx6ozChyOQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA')"}; 
+  background: #0F0F25;
   background-size: cover;
   display: flex;
   flex-direction: column;

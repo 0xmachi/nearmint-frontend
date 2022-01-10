@@ -2,7 +2,7 @@ import {
   Button,
   H1Text,
   Container,
-  BodyText
+  BodyText,
 } from '../components/Components'
 
 function Landing() {
