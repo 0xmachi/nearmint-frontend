@@ -14,10 +14,14 @@ import {
   NavLeft,
   VLine,
   NavDropBtn,
-  NavRight
+  NavRight,
+  WalletBtn
 } from "./NavbarElements";
+import { useWeb3Context } from "../../hooks/web3Context";
 
 const Navbar = () => {
+  const { connect } = useWeb3Context();
+  let clickFunc = connect;
   return (
       <Nav>
         <NavbarContainer>
@@ -45,6 +49,7 @@ const Navbar = () => {
             <NavBtn>
               <NavDropBtn>Dark Mode  ↓</NavDropBtn>
             </NavBtn>
+            <WalletBtn onClick={clickFunc}>Connect Wallet</WalletBtn>
             <NavBtn>
               <NavBtnLink to='launch'>LAUNCH APP</NavBtnLink>
             </NavBtn>

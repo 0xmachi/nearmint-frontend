@@ -140,3 +140,7 @@ export const NavDropBtn = styled.div`
   color: #FCFCFD;
   margin-right: 30px;
 `
+
+export const WalletBtn = styled.button`
+
+`
