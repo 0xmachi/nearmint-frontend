@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Link as LinkR } from 'react-router-dom';
-import { Link as LinkScroll } from 'react-scroll';
+import styled from "styled-components";
+import { Link as LinkR } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 
 export const Nav = styled.nav`
   background: rgba(19, 21, 48, 0);
@@ -31,7 +31,7 @@ export const NavbarContainer = styled.div`
 export const NavLogo = styled(LinkR)`
   color: #fff;
   justify-self: flex-start;
-  cursor: pointer; 
+  cursor: pointer;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -55,15 +55,15 @@ export const MobileIcon = styled.div`
 `;
 
 export const NavMenu = styled.ul`
-   display: flex;
-   align-items: center;
-   text-align: center;
-   list-style: none;
-   padding-left: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  list-style: none;
+  padding-left: 0;
 
-   @media screen and (max-width: 910px) {
-     display: none;
-   }
+  @media screen and (max-width: 910px) {
+    display: none;
+  }
 `;
 
 export const NavItem = styled.li`
@@ -71,7 +71,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinks = styled(LinkScroll)`
-  color: #777E90;
+  color: #777e90;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -80,7 +80,7 @@ export const NavLinks = styled(LinkScroll)`
   height: 100%;
   cursor: pointer;
 
-  &.active { 
+  &.active {
     border-bottom: 3px solid #01bf71;
   }
 `;
@@ -88,17 +88,17 @@ export const NavLinks = styled(LinkScroll)`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  
+
   @media screen and (max-width: 910px) {
     display: none;
   }
-`
+`;
 
 export const NavBtnLink = styled(LinkR)`
-  background: #3772FF;
+  background: #3772ff;
   white-space: nowrap;
   padding: 13px 20px;
-  color: #FCFCFD;
+  color: #fcfcfd;
   font-size: 14px;
   font-family: sans-serif;
   outline: none;
@@ -112,15 +112,15 @@ export const NavBtnLink = styled(LinkR)`
     background: white;
     color: #010606;
   }
-`
+`;
 
 export const NavLeft = styled.div`
   display: flex;
-`
+`;
 
 export const NavRight = styled.div`
   display: flex;
-`
+`;
 
 export const VLine = styled.div`
   border-left: 1px solid #353945;
@@ -131,16 +131,22 @@ export const VLine = styled.div`
   margin-right: 1.35rem;
 
   @media screen and (max-width: 760px) {
-     display: none;
+    display: none;
   }
-`
+`;
 
 export const NavDropBtn = styled.div`
   font-size: 14px;
-  color: #FCFCFD;
+  color: #fcfcfd;
   margin-right: 30px;
-`
+`;
 
 export const WalletBtn = styled.button`
-
-`
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  color: #fcfcfd;
+  font-size: 14px;
+  margin-right: 30px
+`;
