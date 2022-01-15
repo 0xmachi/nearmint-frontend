@@ -148,5 +148,15 @@ export const WalletBtn = styled.button`
   padding: 0;
   color: #fcfcfd;
   font-size: 14px;
-  margin-right: 30px
+  margin-right: 30px;
+  font-weight: 600;
+
+  &:hover {
+    color:yellow
+  }
+
+  &:focus {
+    color: red;
+  }
+
 `;
