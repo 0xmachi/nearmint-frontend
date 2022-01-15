@@ -8,12 +8,12 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
  * @returns string
  */
 function getTestnetURI() {
-  return '';
+  return 'https://data-seed-prebsc-1-s1.binance.org:8545/';
 }
 
 
 function getMainnetURI(): string {
-  return 'https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
+  return 'https://bsc-dataseed.binance.org/';
 }
 
 /*
