@@ -3,16 +3,16 @@ import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
 
 export const Nav = styled.nav`
-  background: #10122b;
+  background: rgba(19, 21, 48, 0);
   height: 70px;
-  margin-top: -70px;
+  /* margin-top: -70px; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  position: sticky;
+  /* position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20; */
   @media screen and (max-width: 960px) {
     transaction: 0.8 all ease;
   }
@@ -42,7 +42,7 @@ export const NavLogo = styled(LinkR)`
 export const MobileIcon = styled.div`
   display: none;
 
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 910px) {
     display: block;
     position: absolute;
     top: 8px;
@@ -61,7 +61,7 @@ export const NavMenu = styled.ul`
    list-style: none;
    padding-left: 0;
 
-   @media screen and (max-width: 760px) {
+   @media screen and (max-width: 910px) {
      display: none;
    }
 `;
@@ -89,7 +89,7 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 910px) {
     display: none;
   }
 `
@@ -138,5 +138,5 @@ export const VLine = styled.div`
 export const NavDropBtn = styled.div`
   font-size: 14px;
   color: #FCFCFD;
-  margin-right: 40px;
+  margin-right: 30px;
 `
