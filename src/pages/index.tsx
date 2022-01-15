@@ -9,11 +9,14 @@ import DetailSection from "../components/DetailSection";
 import Footer from "../components/Footer";
 import { Container } from "./pageElements";
 import { Web3ContextProvider } from "../hooks/web3Context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   return (
     <Web3ContextProvider>
       <Router>
+        <ToastContainer />
         <Container>
           <Sidebar />
           <Navbar />

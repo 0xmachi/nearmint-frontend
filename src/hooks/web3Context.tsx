@@ -2,6 +2,7 @@ import React, { useState, ReactElement, useContext, useEffect, useMemo, useCallb
 import Web3Modal from "web3modal";
 import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider, WebSocketProvider } from "@ethersproject/providers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import { toast } from "react-toastify";
 
 /**
  * kept as function to mimic `getMainnetURI()`
@@ -148,6 +149,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     const validNetwork = _checkNetwork(chainId);
     if (!validNetwork) {
       console.error("Wrong network, please switch to Binance Smart Chain");
+      toast.error("Wrong network, please switch to Binance Smart Chain")
       return;
     }
     // Save everything after we've validated the right network.
