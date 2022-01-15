@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import ReactLogo from "../../images/logo.svg";
 import {
@@ -17,11 +18,33 @@ import {
   NavRight,
   WalletBtn,
 } from "./NavbarElements";
-import { useWeb3Context } from "../../hooks/web3Context";
+import { useAddress, useWeb3Context } from "../../hooks/web3Context";
 
 const Navbar = () => {
-  const { connect } = useWeb3Context();
+  const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
+  const address = useAddress();
+  const [isConnected, setConnected] = useState(connected);
+
+  let buttonText = "Connect Wallet";
+
   let clickFunc = connect;
+
+  if (isConnected) {
+    // buttonText = "Disconnect";
+    buttonText = address;
+    clickFunc = disconnect;
+  }
+
+  useEffect(() => {
+    if (address) {
+      connect();
+    }
+  }, [address]);
+  useEffect(() => {
+    setConnected(connected);
+  }, [web3, connected]);
+
+
   return (
     <Nav>
       <NavbarContainer>
@@ -49,7 +72,7 @@ const Navbar = () => {
           <NavBtn>
             <NavDropBtn>Dark Mode ↓</NavDropBtn>
           </NavBtn>
-          <WalletBtn onClick={clickFunc}>Connect Wallet</WalletBtn>
+          <WalletBtn onClick={clickFunc}>{buttonText}</WalletBtn>
           <NavBtn>
             <NavBtnLink to="launch">LAUNCH APP</NavBtnLink>
           </NavBtn>
