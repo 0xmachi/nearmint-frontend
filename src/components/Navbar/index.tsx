@@ -19,6 +19,7 @@ import {
   WalletBtn,
 } from "./NavbarElements";
 import { useAddress, useWeb3Context } from "../../hooks/web3Context";
+import { shorten } from "../../helpers";
 
 const Navbar = () => {
   const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
@@ -31,7 +32,7 @@ const Navbar = () => {
 
   if (isConnected) {
     // buttonText = "Disconnect";
-    buttonText = address;
+    buttonText = shorten(address);
     clickFunc = disconnect;
   }
 
@@ -40,10 +41,10 @@ const Navbar = () => {
       connect();
     }
   }, [address]);
+
   useEffect(() => {
     setConnected(connected);
   }, [web3, connected]);
-
 
   return (
     <Nav>
