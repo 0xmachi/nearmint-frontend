@@ -21,8 +21,12 @@ const DetailSection = () => {
             We support project sustainable fundraising for the NEAR Ecosystem
           </Heading>
           <BtnWrap>
-            <Button>Launch App ></Button>
+            <Button>Learn more</Button>
           </BtnWrap>
+          {/* TODO: */}
+          {/* <BtnWrap>
+            <Button>Launch App ></Button>
+          </BtnWrap> */}
         </TextWrapper>
       </DetailWrapper>
     </DetailContainer>
