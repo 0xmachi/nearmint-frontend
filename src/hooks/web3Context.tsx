@@ -4,16 +4,38 @@ import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider, WebSocketProvider
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { toast } from "react-toastify";
 
+
 /**
  * kept as function to mimic `getMainnetURI()`
  * @returns string
  */
+
+const USE_AURORA = true;
+
+// https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain
+const BSC_TESTNET_CHAINID = 56;
+const BSC_MAINNET_CHAINID = 97;
+
+// https://doc.aurora.dev/develop/networks
+const AURORA_MAINNET_CHAINID = 1313161554;
+const AURORA_TESTNET_CHAINID = 1313161555;
+const AURORA_MAINNET_URI = 'https://mainnet.aurora.dev';
+const AURORA_TESTNET_URI = 'https://testnet.aurora.dev';
+
 function getTestnetURI() {
+  if (USE_AURORA) {
+    return AURORA_TESTNET_URI;
+  }
+
   return 'https://data-seed-prebsc-1-s1.binance.org:8545/';
 }
 
 
 function getMainnetURI(): string {
+  if (USE_AURORA) {
+    return AURORA_MAINNET_URI
+  }
+  
   return 'https://bsc-dataseed.binance.org/';
 }
 
@@ -120,13 +142,13 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     console.error(
       "You are switching networks",
       0,
-      otherChainID === 56 || otherChainID === 97,
+      otherChainID === AURORA_TESTNET_CHAINID || otherChainID === AURORA_MAINNET_CHAINID,
     );
     if (chainID !== otherChainID) {
       console.warn("You are switching networks", 0);
-      if (otherChainID === 56 || otherChainID === 97) {
+      if (otherChainID === AURORA_TESTNET_CHAINID || otherChainID === AURORA_MAINNET_CHAINID) {
         setChainID(otherChainID);
-        otherChainID === 56 ? setUri(getMainnetURI()) : setUri(getTestnetURI());
+        otherChainID === AURORA_TESTNET_CHAINID ? setUri(getMainnetURI()) : setUri(getTestnetURI());
         return true;
       }
       return false;
@@ -148,8 +170,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     const connectedAddress = await connectedProvider.getSigner().getAddress();
     const validNetwork = _checkNetwork(chainId);
     if (!validNetwork) {
-      console.error("Wrong network, please switch to Binance Smart Chain");
-      toast.error("Wrong network, please switch to Binance Smart Chain")
+      console.error("Wrong network, please switch to Aurora Mainnet chain");
+      toast.error("Wrong network, please switch to Aurora Mainnet chain")
       return;
     }
     // Save everything after we've validated the right network.
