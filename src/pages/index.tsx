@@ -11,13 +11,14 @@ import { Container } from "./pageElements";
 import { Web3ContextProvider } from "../hooks/web3Context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TestDeposit from "./testDeposit";
 
 const Home = () => {
   return (
     <Web3ContextProvider>
       <Router>
         <ToastContainer />
-        <Container>
+        {/* <Container>
           <Sidebar />
           <Navbar />
           <HeroSection />
@@ -25,7 +26,8 @@ const Home = () => {
           <SupportSection />
           <DetailSection />
           <Footer />
-        </Container>
+        </Container> */}
+        <TestDeposit />
       </Router>
     </Web3ContextProvider>
   );
