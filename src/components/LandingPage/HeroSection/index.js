@@ -1,6 +1,6 @@
 import React from 'react'
-import ReactLogo from '../../images/heroLogo.png';
-import ButtonImg from '../../images/button.png';
+import ReactLogo from '../../../images/heroLogo.png';
+import ButtonImg from '../../../images/button.png';
 
 
 import {
