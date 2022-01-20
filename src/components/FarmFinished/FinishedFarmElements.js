@@ -61,4 +61,13 @@ export const BondColumn = styled.div`
   font-size: 14px;
   align-items: center;
   justify-content: start;
+  font-weight: 500;
 `
+export const CryptoImage = styled.img`
+  height: 36px;
+  padding-right: 10px;
+`;
+
+export const BondSendIcon = styled.img`
+  height: 20px;
+`;

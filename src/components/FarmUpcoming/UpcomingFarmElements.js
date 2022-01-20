@@ -42,14 +42,15 @@ export const CryptoCell = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 200px;
-  padding: 20px;
+  height: 220px;
+  padding: 15px;
 `;
 
 export const CryptoDetails = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 10px;
 `;
 
 export const CryptoTitle = styled.p`
@@ -67,7 +68,7 @@ export const CryptoDesc = styled.p`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  margin-top: 25px;
+  margin-top: 35px;
 `;
 
 export const Button = styled(LinkR)`
