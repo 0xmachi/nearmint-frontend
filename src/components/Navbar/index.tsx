@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import ReactLogo from "../../images/logo.svg";
@@ -23,11 +22,12 @@ import { useAddress, useWeb3Context } from "../../hooks/web3Context";
 import { shorten } from "../../helpers";
 
 type Props = {
-  showConnect: boolean
+  showConnect?: boolean;
+  showLaunchApp?: boolean;
 };
 
-const Navbar = ({showConnect}: Props) => {
-  const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
+const Navbar = ({ showConnect, showLaunchApp }: Props) => {
+  const { connect, disconnect, connected } = useWeb3Context();
   const address = useAddress();
   const [isConnected, setConnected] = useState(connected);
 
@@ -49,7 +49,7 @@ const Navbar = ({showConnect}: Props) => {
 
   useEffect(() => {
     setConnected(connected);
-  }, [web3, connected]);
+  }, [connected]);
 
   return (
     <Nav>
@@ -78,12 +78,14 @@ const Navbar = ({showConnect}: Props) => {
           <NavBtn>
             <NavDropBtn>Dark Mode ↓</NavDropBtn>
           </NavBtn>
-          {/* TODO: */}
-          {/* <WalletBtn onClick={clickFunc}>{buttonText}</WalletBtn> */}
-          {/* <NavBtn>
-            <NavBtnLink to="launch">LAUNCH APP</NavBtnLink>
-          </NavBtn> */}
-          { showConnect && <WalletBtn onClick={clickFunc}>{buttonText}</WalletBtn> }
+          {showConnect && (
+            <WalletBtn onClick={clickFunc}>{buttonText}</WalletBtn>
+          )}
+          {showLaunchApp && (
+            <NavBtn>
+              <NavBtnLink to="launch">LAUNCH APP</NavBtnLink>
+            </NavBtn>
+          )}
         </NavRight>
         <MobileIcon>
           <FaBars />

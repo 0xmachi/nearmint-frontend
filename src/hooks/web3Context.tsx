@@ -3,6 +3,7 @@ import Web3Modal from "web3modal";
 import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider, WebSocketProvider } from "@ethersproject/providers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { toast } from "react-toastify";
+import { AURORA_MAINNET_CHAINID, AURORA_MAINNET_URI, AURORA_TESTNET_CHAINID, AURORA_TESTNET_URI } from "../constants";
 
 
 /**
@@ -11,16 +12,6 @@ import { toast } from "react-toastify";
  */
 
 const USE_AURORA = true;
-
-// https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain
-const BSC_TESTNET_CHAINID = 56;
-const BSC_MAINNET_CHAINID = 97;
-
-// https://doc.aurora.dev/develop/networks
-const AURORA_MAINNET_CHAINID = 1313161554;
-const AURORA_TESTNET_CHAINID = 1313161555;
-const AURORA_MAINNET_URI = 'https://mainnet.aurora.dev';
-const AURORA_TESTNET_URI = 'https://testnet.aurora.dev';
 
 function getTestnetURI() {
   if (USE_AURORA) {
@@ -79,7 +70,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [connected, setConnected] = useState(false);
   // NOTE (appleseed): if you are testing on rinkeby you need to set chainId === 4 as the default for non-connected wallet testing...
   // ... you also need to set getTestnetURI() as the default uri state below
-  const [chainID, setChainID] = useState(97); //56 or 97
+  const [chainID, setChainID] = useState(AURORA_MAINNET_CHAINID); //56 or 97
   const [address, setAddress] = useState("");
 
   const [uri, setUri] = useState(getTestnetURI());
@@ -95,8 +86,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           package: WalletConnectProvider,
           options: {
             rpc: {
-              56: getMainnetURI(),
-              97: getTestnetURI(),
+              [AURORA_MAINNET_CHAINID]: getMainnetURI(),
+              [AURORA_TESTNET_CHAINID]: getTestnetURI(),
             },
           },
         },

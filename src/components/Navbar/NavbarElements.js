@@ -160,3 +160,22 @@ export const WalletBtn = styled.button`
   }
 
 `;
+
+// export const WalletBtnV2 = styled.button`
+//   background: #3772ff;
+//   color: #fcfcfd;
+//   font-size: 14px;
+//   padding: 0;
+//   margin: 0;
+//   font-family: sans-serif;
+//   font-weight: 600;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   text-decoration: none;
+
+//   &:hover {
+//     transition: all 0.2s ease-in-out;
+//     background: white;
+//     color: #010606;
+//   }
+// `
