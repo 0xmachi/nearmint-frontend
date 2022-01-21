@@ -24,6 +24,8 @@ import { toast } from "react-toastify";
 
 const LiveFarming = () => {
   const [totalDeposits, setTotalDeposits] = useState(0)
+  const [totalUsers, setTotalUsers] = useState(0)
+
   // web3 stuff
   const { provider, address, connected } = useWeb3Context();
 
@@ -37,6 +39,10 @@ const LiveFarming = () => {
       return
     }
 
+    const usersLength = await soloFarmContract.getUsersCount()
+
+    setTotalUsers(usersLength.toNumber())
+    
     const newTotalDepositsBG = await soloFarmContract.deposited(address)
     const newTotalDepositsStr = ethers.utils.formatEther( newTotalDepositsBG )
 
@@ -65,9 +71,13 @@ const LiveFarming = () => {
                   {/* TODO: convert this to a dollar amount */}
                   <BoxDesc>{totalDeposits} wETH-NEAR LP</BoxDesc>
                 </Box>
-                <Box>
+                {/* <Box>
                   <BoxHeader>Pool Remaining</BoxHeader>
                   <BoxDesc>81%</BoxDesc>
+                </Box> */}
+                <Box>
+                  <BoxHeader>Total Users</BoxHeader>
+                  <BoxDesc>{totalUsers} </BoxDesc>
                 </Box>
               </DetailBottom>
             </Details>
