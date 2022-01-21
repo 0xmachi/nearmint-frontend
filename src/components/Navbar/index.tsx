@@ -73,10 +73,11 @@ const Navbar = () => {
           <NavBtn>
             <NavDropBtn>Dark Mode ↓</NavDropBtn>
           </NavBtn>
-          <WalletBtn onClick={clickFunc}>{buttonText}</WalletBtn>
-          <NavBtn>
+          {/* TODO: */}
+          {/* <WalletBtn onClick={clickFunc}>{buttonText}</WalletBtn> */}
+          {/* <NavBtn>
             <NavBtnLink to="launch">LAUNCH APP</NavBtnLink>
-          </NavBtn>
+          </NavBtn> */}
         </NavRight>
         <MobileIcon>
           <FaBars />
