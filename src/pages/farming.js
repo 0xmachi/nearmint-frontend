@@ -8,22 +8,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "./pageElements";
 import { Web3ContextProvider } from "../hooks/web3Context";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Footer from "../components/Footer";
 
 const Farming = () => {
   return (
-    <Web3ContextProvider>
-      <Router>
-        <ToastContainer />
-        <Container>
-          <Sidebar />
-          <Navbar />
-          <LiveFarming />
-          <UpcomingFarm />
-          {/* <FinishedFarm /> */}
-        </Container>
-      </Router>
-    </Web3ContextProvider>
+    <Container>
+      <Sidebar />
+      <Navbar showConnect />
+      <LiveFarming />
+      <UpcomingFarm />
+      {/* <FinishedFarm /> */}
+      <Footer />
+    </Container>
   );
 };
 

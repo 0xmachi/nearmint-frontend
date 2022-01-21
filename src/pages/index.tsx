@@ -14,14 +14,14 @@ import TestDeposit from "./testDeposit";
 const Home = () => {
   return (
     <Container>
-    <Sidebar />
-    <Navbar />
-    <HeroSection />
-    <InfoSection />
-    <SupportSection />
-    <DetailSection />
-    <Footer />
-  </Container>
+      <Sidebar />
+      <Navbar />
+      <HeroSection />
+      <InfoSection />
+      <SupportSection />
+      <DetailSection />
+      <Footer />
+    </Container>
   );
 };
 

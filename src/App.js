@@ -8,6 +8,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import HomePage from './pages'
 import { Web3ContextProvider } from "./hooks/web3Context";
+import Farming from './pages/farming';
 
 const App = () => {
   return (
@@ -17,6 +18,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route exact path="/farms">
+            <Farming />
           </Route>
           {/* <Route path="/about">
             <About />
