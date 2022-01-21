@@ -83,7 +83,7 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
           )}
           {showLaunchApp && (
             <NavBtn>
-              <NavBtnLink to="launch">LAUNCH APP</NavBtnLink>
+              <NavBtnLink to="farms">LAUNCH APP</NavBtnLink>
             </NavBtn>
           )}
         </NavRight>

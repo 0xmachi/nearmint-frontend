@@ -1,5 +1,5 @@
 import React from "react";
-import ReactLogo from "../../images/waveImage.png";
+import ReactLogo from "../../../images/waveImage.png";
 
 import {
   HeroContainer,

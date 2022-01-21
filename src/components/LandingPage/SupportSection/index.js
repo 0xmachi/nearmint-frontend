@@ -1,6 +1,6 @@
 import React from "react";
-import NearLogo from "../../images/nearLogo.png";
-import ChainImage from "../../images/chainImg.png";
+import NearLogo from "../../../images/nearLogo.png";
+import ChainImage from "../../../images/chainImg.png";
 
 import {
   SupportContainer,

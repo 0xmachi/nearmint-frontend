@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './pages/index.tsx';
+import "react-toastify/dist/ReactToastify.css";
+
+import Farming from './pages/farming';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
