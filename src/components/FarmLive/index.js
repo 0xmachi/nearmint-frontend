@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../../images/projectImage.png";
+import Image2 from "../../images/farmNearmint.png";
 import {
   LiveFarmContainer,
   Header,
@@ -23,7 +24,7 @@ const LiveFarming = () => {
         <Wrapper>
           <Header>Live Farming</Header>
           <ProjectSection>
-            <Img src={Image} alt="Decor Image" />
+            <Img src={Image2} alt="Decor Image" />
             <Details>
               <DetailTop>
                 <Name>NEARmint Farm</Name>

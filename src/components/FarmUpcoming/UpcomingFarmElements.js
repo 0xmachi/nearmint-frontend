@@ -44,8 +44,8 @@ export const CryptoCell = styled.div`
 export const Image = styled.img`
   height: 220px;
   padding: 15px;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
 `;
 
 export const CryptoDetails = styled.div`
@@ -71,8 +71,8 @@ export const CryptoDesc = styled.p`
 export const CryptoDescBlur = styled.p`
   color: white;
   margin: 0;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
 `;
 
 export const ButtonWrapper = styled.div`
