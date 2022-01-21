@@ -16,6 +16,6 @@ export const networkID = 1313161554;
 
 export const addresses: IAddresses = {
   1313161554: {
-    SOLO_FARM_ADDRESS: "0x490859661d8F4956Ce7E9A0E2b28bd1163DCAc3e",
+    SOLO_FARM_ADDRESS: "0x512e4bfCfEd84b388aE8d18fD5308FcFfC4794FE",
   },
 };
