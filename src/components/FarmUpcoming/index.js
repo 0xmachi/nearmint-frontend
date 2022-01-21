@@ -11,6 +11,8 @@ import {
   CryptoTitle,
   ButtonWrapper,
   Button,
+  CryptoDescBlur,
+  ButtonDisabled
 } from "./UpcomingFarmElements";
 import CryptoImage from "../../images/cryptoImage.png";
 
@@ -19,7 +21,7 @@ const UpcomingFarm = () => {
     <>
       <UpcomingFarmContainer>
         <Wrapper>
-          <Header>Upcoming Farm</Header>
+          <Header>Upcoming Farms</Header>
           <CryptoCellContainer>
             <CryptoCell>
               <Image src={CryptoImage} alt="Crypto Image" />
@@ -32,52 +34,52 @@ const UpcomingFarm = () => {
                   bringing....Read More
                 </CryptoDesc>
                 <ButtonWrapper>
-                  <Button>Get Early Access ></Button>
+                  <Button to="#">Get Early Access ></Button>
                 </ButtonWrapper>
               </CryptoDetails>
             </CryptoCell>
             <CryptoCell>
               <Image src={CryptoImage} alt="Crypto Image" />
               <CryptoDetails>
-                <CryptoTitle>Multibridge</CryptoTitle>
-                <CryptoDesc>
+                <CryptoTitle>Media DAO</CryptoTitle>
+                <CryptoDescBlur>
                   Multibridge will be developing a cross directional bridge
                   between Near, Polygon and Terra to transfer stablecoins (USDC,
                   USDT, UST) between chains. Future roadmap includes
                   bringing....Read More
-                </CryptoDesc>
+                </CryptoDescBlur>
                 <ButtonWrapper>
-                  <Button>Get Early Access ></Button>
+                <ButtonDisabled to="#">Coming soon</ButtonDisabled>
                 </ButtonWrapper>
               </CryptoDetails>
             </CryptoCell>
             <CryptoCell>
               <Image src={CryptoImage} alt="Crypto Image" />
               <CryptoDetails>
-                <CryptoTitle>Multibridge</CryptoTitle>
-                <CryptoDesc>
+                <CryptoTitle>Humanity Grants DAO</CryptoTitle>
+                <CryptoDescBlur>
                   Multibridge will be developing a cross directional bridge
                   between Near, Polygon and Terra to transfer stablecoins (USDC,
                   USDT, UST) between chains. Future roadmap includes
                   bringing....Read More
-                </CryptoDesc>
+                </CryptoDescBlur>
                 <ButtonWrapper>
-                  <Button>Get Early Access ></Button>
+                <ButtonDisabled to="#">Coming soon</ButtonDisabled>
                 </ButtonWrapper>
               </CryptoDetails>
             </CryptoCell>
             <CryptoCell>
               <Image src={CryptoImage} alt="Crypto Image" />
               <CryptoDetails>
-                <CryptoTitle>Multibridge</CryptoTitle>
-                <CryptoDesc>
+                <CryptoTitle>M2 Finance</CryptoTitle>
+                <CryptoDescBlur>
                   Multibridge will be developing a cross directional bridge
                   between Near, Polygon and Terra to transfer stablecoins (USDC,
                   USDT, UST) between chains. Future roadmap includes
                   bringing....Read More
-                </CryptoDesc>
+                </CryptoDescBlur>
                 <ButtonWrapper>
-                  <Button>Get Early Access ></Button>
+                  <ButtonDisabled to="#">Coming soon</ButtonDisabled>
                 </ButtonWrapper>
               </CryptoDetails>
             </CryptoCell>

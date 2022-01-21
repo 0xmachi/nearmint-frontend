@@ -68,6 +68,13 @@ export const CryptoDesc = styled.p`
   margin: 0;
 `;
 
+export const CryptoDescBlur = styled.p`
+  color: white;
+  margin: 0;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+`;
+
 export const ButtonWrapper = styled.div`
   display: flex;
   margin-top: 35px;
@@ -89,4 +96,22 @@ export const Button = styled(LinkR)`
     background: #3772ff;
     color: #fcfcfd;
   }
+`;
+
+export const ButtonDisabled = styled(LinkR)`
+  background: #3D3E55;
+  padding: 14px 24px;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 600;
+  cursor: default;
+  /* transition: all 0.2s ease-in-out; */
+  text-decoration: none;
+
+  /* &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #3772ff;
+    color: #fcfcfd;
+  } */
 `;
