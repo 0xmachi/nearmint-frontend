@@ -42,12 +42,17 @@ const LiveFarming = () => {
     const usersLength = await soloFarmContract.getUsersCount()
 
     setTotalUsers(usersLength.toNumber())
-    
-    const newTotalDepositsBG = await soloFarmContract.deposited(address)
-    const newTotalDepositsStr = ethers.utils.formatEther( newTotalDepositsBG )
 
-    setTotalDeposits(parseFloat(newTotalDepositsStr))
-  }, [address, connected, soloFarmContract])
+    let currentTotalDeposits = 0;
+    for (let i = 0; i < usersLength; i++) {
+      const userAddr = await soloFarmContract.users(i)
+      const userDepositsBG = await soloFarmContract.deposited(userAddr)
+      const userDepositsStr = ethers.utils.formatEther( userDepositsBG )
+      currentTotalDeposits += parseFloat(userDepositsStr)
+    }
+    
+    setTotalDeposits(currentTotalDeposits)
+  }, [connected, soloFarmContract])
 
   useEffect(() => {
     fetchContractsInfos()
