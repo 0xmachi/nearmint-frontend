@@ -55,7 +55,7 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
     <Nav>
       <NavbarContainer>
         <NavLeft>
-          <NavLogo to="/">
+          <NavLogo to="home">
             <img src={ReactLogo} alt="Logo" />
           </NavLogo>
           <VLine />
