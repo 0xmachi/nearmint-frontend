@@ -44,6 +44,8 @@ export const CryptoCell = styled.div`
 export const Image = styled.img`
   height: 220px;
   padding: 15px;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 `;
 
 export const CryptoDetails = styled.div`
