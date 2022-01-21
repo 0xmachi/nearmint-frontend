@@ -9,6 +9,7 @@ import DetailSection from "../components/LandingPage/DetailSection";
 import HeroSection from "../components/LandingPage/HeroSection";
 import InfoSection from "../components/LandingPage/InfoSection";
 import SupportSection from "../components/LandingPage/SupportSection";
+import TestDeposit from "./testDeposit";
 
 const Home = () => {
   return (

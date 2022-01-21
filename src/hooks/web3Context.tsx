@@ -3,17 +3,30 @@ import Web3Modal from "web3modal";
 import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider, WebSocketProvider } from "@ethersproject/providers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { toast } from "react-toastify";
+import { AURORA_MAINNET_CHAINID, AURORA_MAINNET_URI, AURORA_TESTNET_CHAINID, AURORA_TESTNET_URI } from "../constants";
+
 
 /**
  * kept as function to mimic `getMainnetURI()`
  * @returns string
  */
+
+const USE_AURORA = true;
+
 function getTestnetURI() {
+  if (USE_AURORA) {
+    return AURORA_TESTNET_URI;
+  }
+
   return 'https://data-seed-prebsc-1-s1.binance.org:8545/';
 }
 
 
 function getMainnetURI(): string {
+  if (USE_AURORA) {
+    return AURORA_MAINNET_URI
+  }
+  
   return 'https://bsc-dataseed.binance.org/';
 }
 
@@ -57,7 +70,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [connected, setConnected] = useState(false);
   // NOTE (appleseed): if you are testing on rinkeby you need to set chainId === 4 as the default for non-connected wallet testing...
   // ... you also need to set getTestnetURI() as the default uri state below
-  const [chainID, setChainID] = useState(97); //56 or 97
+  const [chainID, setChainID] = useState(AURORA_MAINNET_CHAINID); //56 or 97
   const [address, setAddress] = useState("");
 
   const [uri, setUri] = useState(getTestnetURI());
@@ -73,8 +86,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           package: WalletConnectProvider,
           options: {
             rpc: {
-              56: getMainnetURI(),
-              97: getTestnetURI(),
+              [AURORA_MAINNET_CHAINID]: getMainnetURI(),
+              [AURORA_TESTNET_CHAINID]: getTestnetURI(),
             },
           },
         },
@@ -120,13 +133,13 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     console.error(
       "You are switching networks",
       0,
-      otherChainID === 56 || otherChainID === 97,
+      otherChainID === AURORA_TESTNET_CHAINID || otherChainID === AURORA_MAINNET_CHAINID,
     );
     if (chainID !== otherChainID) {
       console.warn("You are switching networks", 0);
-      if (otherChainID === 56 || otherChainID === 97) {
+      if (otherChainID === AURORA_TESTNET_CHAINID || otherChainID === AURORA_MAINNET_CHAINID) {
         setChainID(otherChainID);
-        otherChainID === 56 ? setUri(getMainnetURI()) : setUri(getTestnetURI());
+        otherChainID === AURORA_TESTNET_CHAINID ? setUri(getMainnetURI()) : setUri(getTestnetURI());
         return true;
       }
       return false;
@@ -148,8 +161,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     const connectedAddress = await connectedProvider.getSigner().getAddress();
     const validNetwork = _checkNetwork(chainId);
     if (!validNetwork) {
-      console.error("Wrong network, please switch to Binance Smart Chain");
-      toast.error("Wrong network, please switch to Binance Smart Chain")
+      console.error("Wrong network, please switch to Aurora Mainnet chain");
+      toast.error("Wrong network, please switch to Aurora Mainnet chain")
       return;
     }
     // Save everything after we've validated the right network.
