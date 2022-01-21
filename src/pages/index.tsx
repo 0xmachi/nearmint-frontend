@@ -11,6 +11,7 @@ import { Container } from "./pageElements";
 import { Web3ContextProvider } from "../hooks/web3Context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TestDeposit from "./testDeposit";
 
 const Home = () => {
   return (
