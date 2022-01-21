@@ -24,6 +24,14 @@ export const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+export const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+`;
+
 export const Header = styled.h1`
   margin: 0;
   /* padding: 0 70px; */
@@ -58,12 +66,17 @@ const FarmDetails = () => {
       <LiveFarmContainer>
         <Wrapper>
           <Img src={Rectangle} alt="Decor Image" />
-          <Column>
-          <Header>About NEARmint</Header>
-          <CryptoDesc>NEARmint is focused on bringing DeFi 2.0 protocol-owned- liquidity (PoL) to the NEAR ecosystem through a mechanism called Community Farming where users trade their LP rewards for tokens at prelaunch prices.</CryptoDesc>
-          <CryptoDesc>NEARmint exists to provide NEAR ecosystem projects the ability to design their token economics in a way that is sustainable, for the long term. This is important for the ecosystem, protocols and users who truly believe in a decentralized vision. We want NEARmint to be seen as the gold stamp of new protocols coming into the ecosystem and be a safeguard to the community against predatory token economics and release schedules.</CryptoDesc>
-          <CryptoDesc>How do we help to do this? Protocols that forgo instant TVL through high emissions in exchange for PoL (protocol-owned liquidity) are ones that are operating with long-term visions. Good for the ecosystem, good for DeFi and even better for our users!</CryptoDesc>
-          </Column>
+          <HStack>
+            <Column>
+              <Header>About NEARmint</Header>
+              <CryptoDesc>NEARmint is focused on bringing DeFi 2.0 protocol-owned- liquidity (PoL) to the NEAR ecosystem through a mechanism called Community Farming where users trade their LP rewards for tokens at prelaunch prices.</CryptoDesc>
+              <CryptoDesc>NEARmint exists to provide NEAR ecosystem projects the ability to design their token economics in a way that is sustainable, for the long term. This is important for the ecosystem, protocols and users who truly believe in a decentralized vision. We want NEARmint to be seen as the gold stamp of new protocols coming into the ecosystem and be a safeguard to the community against predatory token economics and release schedules.</CryptoDesc>
+              <CryptoDesc>How do we help to do this? Protocols that forgo instant TVL through high emissions in exchange for PoL (protocol-owned liquidity) are ones that are operating with long-term visions. Good for the ecosystem, good for DeFi and even better for our users!</CryptoDesc>
+            </Column>
+            <Column>
+              {/* <CryptoDesc>Staking launching soon</CryptoDesc> */}
+            </Column>
+          </HStack>
         </Wrapper>
       </LiveFarmContainer>
       <Footer />
