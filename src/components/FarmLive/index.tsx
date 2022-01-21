@@ -1,26 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "../../images/projectImage.png";
 import Image2 from "../../images/farmNearmint.png";
-import {
-  LiveFarmContainer,
-  Header,
-  ProjectSection,
-  Img,
-  Details,
-  DetailTop,
-  Name,
-  Button, 
-  DetailBottom,
-  Box,
-  BoxHeader,
-  BoxDesc,
-  Wrapper
-} from "./LiveFarmingElements";
 import { useWeb3Context } from "../../hooks/web3Context";
 import { addresses, networkID } from "../../constants";
 import SoloFarmAbi from '../../abi/contracts/SoloFarm.sol/SoloFarm.json'
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
+import { Details, Header, Img, LiveFarmContainer, ProjectSection, Wrapper, DetailTop,
+  Name,
+  Button, 
+  DetailBottom,
+  Box,
+  BoxHeader,
+  BoxDesc, } from "./LiveFarmingElements";
 
 const LiveFarming = () => {
   const [totalDeposits, setTotalDeposits] = useState(0)
@@ -68,7 +60,7 @@ const LiveFarming = () => {
             <Details>
               <DetailTop>
                 <Name>NEARmint Initial Staking Pool</Name>
-                <Button>More Details {">"}</Button>
+                <Button to="details/1">More Details {">"}</Button>
               </DetailTop>
               <DetailBottom>
                 <Box>

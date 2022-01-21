@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import HomePage from './pages'
 import Farming from './pages/farming';
 import DepositTest from './pages/testDeposit'
+import FarmDetails from './pages/farmDetails'
+import NotFound from './pages/notFound'
 import { Web3ContextProvider } from "./hooks/web3Context";
 
 const App = () => {
@@ -26,8 +28,14 @@ const App = () => {
           <Route exact path="/farms">
             <Farming />
           </Route>
+          <Route exact path="/details/:id">
+            <FarmDetails />
+          </Route>
           <Route exact path="/test">
             <DepositTest />
+          </Route>
+          <Route path="/*">
+            <NotFound />
           </Route>
           {/* <Route path="/about">
             <About />
