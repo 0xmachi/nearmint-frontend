@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <Container>
       <Sidebar />
-      <Navbar />
+      <Navbar showLaunchApp />
       <HeroSection />
       <InfoSection />
       <SupportSection />

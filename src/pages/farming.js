@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import LiveFarming from "../components/FarmLive";
+import LiveFarming from "../components/FarmLive/index";
 import UpcomingFarm from "../components/FarmUpcoming";
 import FinishedFarm from "../components/FarmFinished";
 import { BrowserRouter as Router } from "react-router-dom";
