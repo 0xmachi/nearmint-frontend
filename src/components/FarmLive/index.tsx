@@ -62,7 +62,8 @@ const LiveFarming = () => {
               <DetailBottom>
                 <Box>
                   <BoxHeader>Total Deposited</BoxHeader>
-                  <BoxDesc>${totalDeposits}</BoxDesc>
+                  {/* TODO: convert this to a dollar amount */}
+                  <BoxDesc>{totalDeposits} wETH-NEAR LP</BoxDesc>
                 </Box>
                 <Box>
                   <BoxHeader>Pool Remaining</BoxHeader>
