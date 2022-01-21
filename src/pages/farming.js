@@ -20,7 +20,7 @@ const Farming = () => {
           <Navbar />
           <LiveFarming />
           <UpcomingFarm />
-          <FinishedFarm />
+          {/* <FinishedFarm /> */}
         </Container>
       </Router>
     </Web3ContextProvider>
