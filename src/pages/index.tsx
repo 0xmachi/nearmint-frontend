@@ -18,7 +18,7 @@ const Home = () => {
     <Web3ContextProvider>
       <Router>
         <ToastContainer />
-        {/* <Container>
+        <Container>
           <Sidebar />
           <Navbar />
           <HeroSection />
@@ -26,8 +26,7 @@ const Home = () => {
           <SupportSection />
           <DetailSection />
           <Footer />
-        </Container> */}
-        <TestDeposit />
+        </Container>
       </Router>
     </Web3ContextProvider>
   );
