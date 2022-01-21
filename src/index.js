@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Farming from './pages/farming';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
   
 ReactDOM.render(
   <React.StrictMode>
-    <Farming />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
