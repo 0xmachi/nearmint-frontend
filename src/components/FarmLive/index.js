@@ -26,17 +26,17 @@ const LiveFarming = () => {
             <Img src={Image} alt="Decor Image" />
             <Details>
               <DetailTop>
-                <Name>Project Name</Name>
+                <Name>NEARmint Farm</Name>
                 <Button>More Details ></Button>
               </DetailTop>
               <DetailBottom>
                 <Box>
                   <BoxHeader>Total Deposited</BoxHeader>
-                  <BoxDesc>$50,000,000</BoxDesc>
+                  <BoxDesc>$50,000</BoxDesc>
                 </Box>
                 <Box>
-                  <BoxHeader>Total Deposited</BoxHeader>
-                  <BoxDesc>$50,000,000</BoxDesc>
+                  <BoxHeader>Rewards Remaining</BoxHeader>
+                  <BoxDesc>80%</BoxDesc>
                 </Box>
               </DetailBottom>
             </Details>
