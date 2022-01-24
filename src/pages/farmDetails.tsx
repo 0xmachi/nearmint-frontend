@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { LiveFarmContainer } from "../components/FarmLive/LiveFarmingElements";
 import Rectangle from "../images/topRectangle.png";
+import BackgroundImage from '../images/BoxBackground.svg'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -58,6 +59,53 @@ export const Img = styled.img`
   padding-top: 30px;
 `;
 
+export const Box = styled.div`
+  border: 1.5px solid rgba(230, 232, 236, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 43.3%;
+  margin: 20px;
+  background-image: url(${ BackgroundImage });
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const BoxHeader = styled.p`
+  margin: 0;
+  padding: 30px 20px 15px 20px;
+  color: white;
+  font-size: 25px;
+`;
+
+export const BoxHeader2 = styled.p`
+  margin: 0;
+  padding: 20px 20px 20px 20px;
+  color: white;
+  font-size: 25px;
+`;
+
+export const BoxDesc = styled.p`
+  margin: 0;
+  padding: 15px 20px 30px 20px;
+  color: white;
+  font-size: 35px;
+  font-weight: 700;
+`;
+
+export const LongBox = styled.div`
+  border: 1.5px solid rgba(230, 232, 236, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 90%;
+  margin: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
 const FarmDetails = () => {
   return (
     <Container>
@@ -75,6 +123,19 @@ const FarmDetails = () => {
             </Column>
             <Column>
               {/* <CryptoDesc>Staking launching soon</CryptoDesc> */}
+              <HStack>
+                <Box>
+                  <BoxHeader>Total Deposited</BoxHeader>
+                  <BoxDesc>$10,000,000</BoxDesc>
+                </Box>
+                <Box>
+                  <BoxHeader>Issues Points</BoxHeader>
+                  <BoxDesc>$0.05</BoxDesc>
+                </Box>
+              </HStack>
+              <LongBox>
+                <BoxHeader2>My Total Deposited</BoxHeader2>
+              </LongBox>
             </Column>
           </HStack>
         </Wrapper>
