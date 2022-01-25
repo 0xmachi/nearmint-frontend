@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import LiveFarming from "../components/FarmLive/index";
@@ -6,12 +6,15 @@ import UpcomingFarm from "../components/FarmUpcoming";
 import FinishedFarm from "../components/FarmFinished";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "./pageElements";
-import { Web3ContextProvider } from "../hooks/web3Context";
+import { useWeb3Context, Web3ContextProvider } from "../hooks/web3Context";
 import { ToastContainer } from "react-toastify";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import Rectangle from "../images/topRectangle.png";
 import BackgroundImage from "../images/BoxBackground.svg";
+import { ethers } from "ethers";
+import { addresses, networkID } from "../constants";
+import SoloFarmAbi from "../abi/contracts/SoloFarm.sol/SoloFarm.json";
 
 export const LiveFarmContainer = styled.div`
   background: #131530;
@@ -238,6 +241,45 @@ export const SubmitButton = styled.button`
   margin-top: 100px;
 `;
 const FarmDetails = () => {
+  const [totalDeposits, setTotalDeposits] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  // web3 stuff
+  const { provider, address, connected } = useWeb3Context();
+  
+  const signer = provider.getSigner();
+  const soloFarmContract = new ethers.Contract(
+    addresses[networkID].SOLO_FARM_ADDRESS as string,
+    SoloFarmAbi,
+    signer
+  );
+
+  const fetchContractsInfos = useCallback(async () => {
+    if (!connected) {
+      // toast.error("Connect your wallet to see this page")
+      // TODO: navigate to a page to connect wallet
+      return;
+    }
+
+    const usersLength = await soloFarmContract.getUsersCount();
+
+    setTotalUsers(usersLength.toNumber());
+
+    let currentTotalDeposits = 0;
+    for (let i = 0; i < usersLength; i++) {
+      const userAddr = await soloFarmContract.users(i);
+      const userDepositsBG = await soloFarmContract.deposited(userAddr);
+      const userDepositsStr = ethers.utils.formatEther(userDepositsBG);
+      currentTotalDeposits += parseFloat(userDepositsStr);
+    }
+
+    setTotalDeposits(currentTotalDeposits);
+  }, [connected, soloFarmContract]);
+
+  useEffect(() => {
+    fetchContractsInfos();
+  }, [fetchContractsInfos]);
+  
   return (
     <Container>
       <Sidebar />
@@ -276,17 +318,17 @@ const FarmDetails = () => {
               <HStack>
                 <Box>
                   <BoxHeader>Total Deposited</BoxHeader>
-                  <BoxDesc>$10,000,000</BoxDesc>
+                  <BoxDesc>{totalDeposits} wETH-NEAR LP</BoxDesc>
                 </Box>
                 <Box>
                   <BoxHeader>Issues Points</BoxHeader>
                   <BoxDesc>$0.05</BoxDesc>
                 </Box>
               </HStack>
-              <LongBox>
+              {/* <LongBox>
                 <LongBoxHeader>My Total Deposited</LongBoxHeader>
                 <LongBoxDesc>$10,000</LongBoxDesc>
-              </LongBox>
+              </LongBox> */}
               <LongBox>
                 <LongBoxHeader>My Total Deposited</LongBoxHeader>
                 <LongBoxDesc>$10,000</LongBoxDesc>
@@ -300,9 +342,9 @@ const FarmDetails = () => {
             </Column>
           </HStack>
           <ProgressBar>
-            <Header>Total Deposited: $50,000,000</Header>
+            <Header>Total Deposited: {totalDeposits} wETH-NEAR LP</Header>
             <OuterBar>
-              <InnerBar width="30%"></InnerBar>
+              <InnerBar width="5%"></InnerBar>
             </OuterBar>
           </ProgressBar>
           <FormSection>
