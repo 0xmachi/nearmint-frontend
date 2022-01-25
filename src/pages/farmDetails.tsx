@@ -10,9 +10,16 @@ import { Web3ContextProvider } from "../hooks/web3Context";
 import { ToastContainer } from "react-toastify";
 import Footer from "../components/Footer";
 import styled from "styled-components";
-import { LiveFarmContainer } from "../components/FarmLive/LiveFarmingElements";
 import Rectangle from "../images/topRectangle.png";
-import BackgroundImage from '../images/BoxBackground.svg'
+import BackgroundImage from "../images/BoxBackground.svg";
+
+export const LiveFarmContainer = styled.div`
+  background: #131530;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 1800px;
+`;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -28,7 +35,7 @@ export const Wrapper = styled.div`
 export const HStack = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: space-between;
   align-items: start;
   width: 100%;
 `;
@@ -44,19 +51,23 @@ export const Header = styled.h1`
 `;
 
 export const CryptoDesc = styled.p`
-  color: white;
+  color: rgba(250, 250, 250, 0.8);
   margin: 0;
   margin-bottom: 10px;
   font-size: 18px;
+  padding-right: 80px;
 `;
 
-const Column = styled.div`
+export const Column = styled.div`
   width: 50%;
-`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Img = styled.img`
   /* height: 440px; */
   padding-top: 30px;
+  width: 100%;
 `;
 
 export const Box = styled.div`
@@ -65,47 +76,167 @@ export const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 43.3%;
-  margin: 20px;
-  background-image: url(${ BackgroundImage });
+  width: 47.5%;
+  margin-top: 107.33px;
+  background-image: url(${BackgroundImage});
   background-repeat: no-repeat;
   background-position: center;
 `;
 
 export const BoxHeader = styled.p`
   margin: 0;
-  padding: 30px 20px 15px 20px;
+  padding-top: 35px;
   color: white;
-  font-size: 25px;
-`;
-
-export const BoxHeader2 = styled.p`
-  margin: 0;
-  padding: 20px 20px 20px 20px;
-  color: white;
-  font-size: 25px;
+  font-size: 20px;
 `;
 
 export const BoxDesc = styled.p`
   margin: 0;
-  padding: 15px 20px 30px 20px;
+  padding: 30px 10px 30px 10px;
   color: white;
-  font-size: 35px;
+  font-size: 34px;
   font-weight: 700;
 `;
 
 export const LongBox = styled.div`
   border: 1.5px solid rgba(230, 232, 236, 0.4);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+export const LongBoxHeader = styled.p`
+  margin: 0;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+`;
+
+export const LongBoxDesc = styled.p`
+  margin: 0;
+  padding: 20px;
+  color: white;
+  font-size: 26px;
+  font-weight: 700;
+`;
+
+export const BottomButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+export const NButton = styled.button`
+  background: transparent;
+  border: 1.5px solid #ffffff;
+  color: #fcfcfd;
+  padding: 1em 2em;
+  min-width: 130px;
+  font-size: 14px;
+  font-weight: 600;
+`;
+
+export const ProgressBar = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 70px;
+`;
+
+export const OuterBar = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  border: 1.5px solid #ffffff;
+`;
+
+export const InnerBar = styled.div`
+  background-color: #3772ff;
+  height: 25px;
+  width: ${(props) => (props.width ? props.width : "10%")};
+  margin: 0.7em 0.7em;
+`;
+
+export const FormSection = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 90%;
-  margin: 20px;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 100%;
+  margin-top: 100px;
 `;
 
+export const FormTopButton = styled.div`
+  display: flex;
+  width: 25%;
+  justify-content: space-around;
+`;
+
+export const Form = styled.div`
+  display: flex;
+  width: 500px;
+  height: 460px;
+  border: 1.5px solid #ffffff;
+  margin-top: 30px;
+`;
+export const FormWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
+export const InputHead = styled.p`
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+`;
+
+export const Input = styled.input`
+  font-size: 18px;
+  padding: 15px;
+  background: transparent;
+  border: 1.5px solid rgba(230, 232, 236, 0.5);
+  color: white;
+  margin-top: 20px;
+  ::placeholder {
+    color: rgba(230, 232, 236, 0.5);
+  }
+`;
+
+export const InputTop = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 50px;
+  align-items: center;
+`;
+
+export const SmallButton = styled.button`
+  background: white;
+  color: black;
+  padding: 0.5em 1.5em;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+`;
+
+export const SubmitButton = styled.button`
+  background: #3772ff;
+  color: white;
+  padding: 1em 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  margin-top: 100px;
+`;
 const FarmDetails = () => {
   return (
     <Container>
@@ -117,9 +248,28 @@ const FarmDetails = () => {
           <HStack>
             <Column>
               <Header>About NEARmint</Header>
-              <CryptoDesc>NEARmint is focused on bringing DeFi 2.0 protocol-owned- liquidity (PoL) to the NEAR ecosystem through a mechanism called Community Farming where users trade their LP rewards for tokens at prelaunch prices.</CryptoDesc>
-              <CryptoDesc>NEARmint exists to provide NEAR ecosystem projects the ability to design their token economics in a way that is sustainable, for the long term. This is important for the ecosystem, protocols and users who truly believe in a decentralized vision. We want NEARmint to be seen as the gold stamp of new protocols coming into the ecosystem and be a safeguard to the community against predatory token economics and release schedules.</CryptoDesc>
-              <CryptoDesc>How do we help to do this? Protocols that forgo instant TVL through high emissions in exchange for PoL (protocol-owned liquidity) are ones that are operating with long-term visions. Good for the ecosystem, good for DeFi and even better for our users!</CryptoDesc>
+              <CryptoDesc>
+                NEARmint is focused on bringing DeFi 2.0 protocol-owned-
+                liquidity (PoL) to the NEAR ecosystem through a mechanism called
+                Community Farming where users trade their LP rewards for tokens
+                at prelaunch prices.
+              </CryptoDesc>
+              <CryptoDesc>
+                NEARmint exists to provide NEAR ecosystem projects the ability
+                to design their token economics in a way that is sustainable,
+                for the long term. This is important for the ecosystem,
+                protocols and users who truly believe in a decentralized vision.
+                We want NEARmint to be seen as the gold stamp of new protocols
+                coming into the ecosystem and be a safeguard to the community
+                against predatory token economics and release schedules.
+              </CryptoDesc>
+              <CryptoDesc>
+                How do we help to do this? Protocols that forgo instant TVL
+                through high emissions in exchange for PoL (protocol-owned
+                liquidity) are ones that are operating with long-term visions.
+                Good for the ecosystem, good for DeFi and even better for our
+                users!
+              </CryptoDesc>
             </Column>
             <Column>
               {/* <CryptoDesc>Staking launching soon</CryptoDesc> */}
@@ -134,10 +284,45 @@ const FarmDetails = () => {
                 </Box>
               </HStack>
               <LongBox>
-                <BoxHeader2>My Total Deposited</BoxHeader2>
+                <LongBoxHeader>My Total Deposited</LongBoxHeader>
+                <LongBoxDesc>$10,000</LongBoxDesc>
               </LongBox>
+              <LongBox>
+                <LongBoxHeader>My Total Deposited</LongBoxHeader>
+                <LongBoxDesc>$10,000</LongBoxDesc>
+              </LongBox>
+              <BottomButtons>
+                <NButton>Website</NButton>
+                <NButton>Telegram</NButton>
+                <NButton>Document</NButton>
+                <NButton>Discord</NButton>
+              </BottomButtons>
             </Column>
           </HStack>
+          <ProgressBar>
+            <Header>Total Deposited: $50,000,000</Header>
+            <OuterBar>
+              <InnerBar width="30%"></InnerBar>
+            </OuterBar>
+          </ProgressBar>
+          <FormSection>
+            <FormTopButton>
+              <NButton>Deposit</NButton>
+              <NButton>Withdraw</NButton>
+            </FormTopButton>
+            <Form>
+              <FormWrapper>
+                <InputHead>LP Tokens</InputHead>
+                <Input type="text" placeholder="wNear - USDT" />
+                <InputTop>
+                  <InputHead>Amount</InputHead>
+                  <SmallButton>Max</SmallButton>
+                </InputTop>
+                <Input type="text" placeholder="wNear - USDT" />
+                <SubmitButton>Deposit</SubmitButton>
+              </FormWrapper>
+            </Form>
+          </FormSection>
         </Wrapper>
       </LiveFarmContainer>
       <Footer />
