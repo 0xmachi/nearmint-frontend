@@ -355,12 +355,12 @@ const FarmDetails = () => {
             <Form>
               <FormWrapper>
                 <InputHead>LP Tokens</InputHead>
-                <Input type="text" placeholder="wNear - USDT" />
+                <Input type="text" placeholder="wETH - USDT" disabled />
                 <InputTop>
                   <InputHead>Amount</InputHead>
                   <SmallButton>Max</SmallButton>
                 </InputTop>
-                <Input type="text" placeholder="wNear - USDT" />
+                <Input type="text" placeholder="$10" />
                 <SubmitButton>Deposit</SubmitButton>
               </FormWrapper>
             </Form>
