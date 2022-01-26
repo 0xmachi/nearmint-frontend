@@ -7,7 +7,7 @@ import FinishedFarm from "../components/FarmFinished";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "./pageElements";
 import { useWeb3Context, Web3ContextProvider } from "../hooks/web3Context";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import Rectangle from "../images/topRectangle.png";
@@ -133,9 +133,9 @@ export const BottomButtons = styled.div`
 `;
 
 export const NButton = styled.button`
-  background: ${(props) => (props.hilight ? 'white' : "transparent")};
+  background: ${(props) => (props.hilight ? "white" : "transparent")};
   border: 1.5px solid #ffffff;
-  color: ${(props) => (props.hilight ? 'black' : "#fcfcfd")};
+  color: ${(props) => (props.hilight ? "black" : "#fcfcfd")};
   padding: 1em 2em;
   min-width: 130px;
   font-size: 14px;
@@ -244,33 +244,34 @@ export const SubmitButton = styled.button`
 
 enum TAB_STATE {
   Deposit,
-  Withdraw
-};
+  Withdraw,
+}
 
 const FarmDetails = () => {
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [userDeposits, setUserDeposits] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
   const [depositAmount, setDepositAmount] = useState(1);
-  const [tabState, setTabState] = useState(TAB_STATE.Deposit)
+  const [withdrawAmount, setWithdrawAmount] = useState(1);
+  const [tabState, setTabState] = useState(TAB_STATE.Deposit);
 
   // web3 stuff
   const { provider, address, connected } = useWeb3Context();
-  
+
   const signer = provider.getSigner();
   const soloFarmContract = useMemo(() => {
     return new ethers.Contract(
       addresses[networkID].SOLO_FARM_ADDRESS as string,
       SoloFarmAbi,
       signer
-    )
+    );
   }, [signer]);
   const wETHNearLPTokenContract = useMemo(() => {
     return new ethers.Contract(
       addresses[networkID].WNEAR_ETH_LP_TOKEN_ADDRESS as string,
       Erc20Abi,
       signer
-    )
+    );
   }, [signer]);
 
   const fetchContractsInfos = useCallback(async () => {
@@ -282,8 +283,10 @@ const FarmDetails = () => {
 
     // get what this user deposited
     const currentUserDepositsBG = await soloFarmContract.deposited(address);
-    const currentUserDepositsStr = ethers.utils.formatEther(currentUserDepositsBG);
-    setUserDeposits(parseFloat(currentUserDepositsStr))
+    const currentUserDepositsStr = ethers.utils.formatEther(
+      currentUserDepositsBG
+    );
+    setUserDeposits(parseFloat(currentUserDepositsStr));
 
     // get what all users deposited
     const usersLength = await soloFarmContract.getUsersCount();
@@ -300,26 +303,68 @@ const FarmDetails = () => {
 
     setTotalDeposits(currentTotalDeposits);
   }, [address, connected, soloFarmContract]);
-  
 
   const handleDeposit = useCallback(async () => {
-    await soloFarmContract.deposit(depositAmount)
-  }, [depositAmount, soloFarmContract])
+    await soloFarmContract.deposit(depositAmount);
+  }, [depositAmount, soloFarmContract]);
 
-  const handleSetMax = useCallback(async () => {
-    const userLPBal = await wETHNearLPTokenContract.balanceOf(address)
-    setDepositAmount(userLPBal)
-  }, [address, wETHNearLPTokenContract])
+  const handleWithdraw = useCallback(async () => {
+    await soloFarmContract.withdraw(withdrawAmount);
+  }, [soloFarmContract, withdrawAmount]);
+
+  const handleSetMaxDeposit = useCallback(async () => {
+    const userLPBal = await wETHNearLPTokenContract.balanceOf(address);
+    setDepositAmount(userLPBal);
+  }, [address, wETHNearLPTokenContract]);
+
+  const handleSetMaxWithdraw = useCallback(async () => {
+    const userDepositedBal = await soloFarmContract.deposited(address);
+    setWithdrawAmount(userDepositedBal);
+  }, [address, soloFarmContract]);
 
   const handleOnChangeAmt = useCallback(async (event) => {
-    const userSetAmt = event.target.value
-    setDepositAmount(userSetAmt)
-  }, [])
+    const userSetAmt = event.target.value;
+    if (tabState === TAB_STATE.Withdraw) {
+      setWithdrawAmount(userSetAmt);
+    } else if (tabState === TAB_STATE.Deposit) {
+      setDepositAmount(userSetAmt);
+    }
+  }, [tabState]);
 
   useEffect(() => {
+    toast.info('Nearmint is currently in beta', {
+      position: "top-right",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    // Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch
+    toast.info('Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch', {
+      position: "top-right",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    toast.info('To recieve rewards, you must be on the whitelist. Please contact Nearmint on twitter to be added to whitelist', {
+      position: "top-right",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     fetchContractsInfos();
   }, [fetchContractsInfos]);
-  
+
   return (
     <Container>
       <Sidebar />
@@ -389,50 +434,65 @@ const FarmDetails = () => {
           </ProgressBar>
           <FormSection>
             <FormTopButton>
-              <NButton 
-                onClick={() => setTabState(TAB_STATE.Deposit)} 
-                hilight={tabState === TAB_STATE.Deposit}>
-                  Deposit
+              <NButton
+                onClick={() => setTabState(TAB_STATE.Deposit)}
+                hilight={tabState === TAB_STATE.Deposit}
+              >
+                Deposit
               </NButton>
-              <NButton 
+              <NButton
                 onClick={() => setTabState(TAB_STATE.Withdraw)}
-                hilight={tabState === TAB_STATE.Withdraw}>
-                Withdraw</NButton>
+                hilight={tabState === TAB_STATE.Withdraw}
+              >
+                Withdraw
+              </NButton>
             </FormTopButton>
-            {
-              tabState === TAB_STATE.Deposit && <Form>
-              <FormWrapper>
-                <InputHead>LP Tokens</InputHead>
-                <Input type="text" placeholder="wETH - USDT" disabled />
-                <InputTop>
-                  <InputHead>Amount</InputHead>
-                  <SmallButton onClick={handleSetMax}>Max</SmallButton>
-                </InputTop>
-                <HStack>
-                  <Input type="number" placeholder="10" value={depositAmount} onChange={handleOnChangeAmt} />
-                  <Input type="text" placeholder="LP" disabled />
-                </HStack>
-                <SubmitButton onClick={handleDeposit}>Deposit</SubmitButton>
-              </FormWrapper>
-            </Form>
-           }
-           {
-              tabState === TAB_STATE.Withdraw && <Form>
-              <FormWrapper>
-                <InputHead>LP Tokens</InputHead>
-                <Input type="text" placeholder="wETH - USDT" disabled />
-                <InputTop>
-                  <InputHead>Amount</InputHead>
-                  <SmallButton onClick={handleSetMax}>Max</SmallButton>
-                </InputTop>
-                <HStack>
-                  <Input type="number" placeholder="10" value={depositAmount} onChange={handleOnChangeAmt} />
-                  <Input type="text" placeholder="LP" disabled />
-                </HStack>
-                <SubmitButton onClick={() => {}}>Withdraw</SubmitButton>
-              </FormWrapper>
-            </Form>
-           }
+            {tabState === TAB_STATE.Deposit && (
+              <Form>
+                <FormWrapper>
+                  <InputHead>LP Tokens</InputHead>
+                  <Input type="text" placeholder="wETH - USDT" disabled />
+                  <InputTop>
+                    <InputHead>Amount</InputHead>
+                    <SmallButton onClick={handleSetMaxDeposit}>Max</SmallButton>
+                  </InputTop>
+                  <HStack>
+                    <Input
+                      type="number"
+                      placeholder="10"
+                      value={depositAmount}
+                      onChange={handleOnChangeAmt}
+                    />
+                    <Input type="text" placeholder="LP" disabled />
+                  </HStack>
+                  <SubmitButton onClick={handleDeposit}>Deposit</SubmitButton>
+                </FormWrapper>
+              </Form>
+            )}
+            {tabState === TAB_STATE.Withdraw && (
+              <Form>
+                <FormWrapper>
+                  <InputHead>LP Tokens</InputHead>
+                  <Input type="text" placeholder="wETH - USDT" disabled />
+                  <InputTop>
+                    <InputHead>Amount</InputHead>
+                    <SmallButton onClick={handleSetMaxWithdraw}>
+                      Max
+                    </SmallButton>
+                  </InputTop>
+                  <HStack>
+                    <Input
+                      type="number"
+                      placeholder="10"
+                      value={withdrawAmount}
+                      onChange={handleOnChangeAmt}
+                    />
+                    <Input type="text" placeholder="LP" disabled />
+                  </HStack>
+                  <SubmitButton onClick={handleWithdraw}>Withdraw</SubmitButton>
+                </FormWrapper>
+              </Form>
+            )}
           </FormSection>
         </Wrapper>
       </LiveFarmContainer>
