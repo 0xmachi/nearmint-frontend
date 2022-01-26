@@ -19,6 +19,10 @@ import {
 } from "./InfoElements";
 
 const HeroSection = () => {
+  const handleOnClickNavLink = () => {
+    window.open('https://twitter.com/nearmintxyz', "_blank")
+  }
+  
   return (
     <>
       <HeroContainer>
@@ -46,7 +50,7 @@ const HeroSection = () => {
                 <Img src={ReactLogo} alt="Logo" />
               </ImgWrap>
               <BtnWrap>
-                <Button>How it Works</Button>
+                <Button onClick={handleOnClickNavLink}>How it Works</Button>
               </BtnWrap>
             </Column2>
           </HeroRow>

@@ -51,6 +51,10 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
     setConnected(connected);
   }, [connected]);
 
+  const handleOnClickNavLink = () => {
+    window.open('https://twitter.com/nearmintxyz', "_blank")
+  }
+
   return (
     <Nav>
       <NavbarContainer>
@@ -61,16 +65,16 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
           <VLine />
           <NavMenu>
             <NavItem>
-              <NavLinks to="about">About</NavLinks>
+              <NavLinks to="#" onClick={handleOnClickNavLink}>About</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="docs">Docs</NavLinks>
+              <NavLinks to="#" onClick={handleOnClickNavLink}>Docs</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="socials">Socials</NavLinks>
+              <NavLinks to="#" onClick={handleOnClickNavLink}>Socials</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="apply">Apply</NavLinks>
+              <NavLinks to="#" onClick={handleOnClickNavLink}>Apply</NavLinks>
             </NavItem>
           </NavMenu>
         </NavLeft>

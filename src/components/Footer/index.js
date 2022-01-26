@@ -12,10 +12,10 @@ const Footer = () => {
   return (
     <>
       <FooterContainer>
-        <IconWrap href="https://discord.com/">
+        <IconWrap href="https://twitter.com/nearmintxyz">
           <Icon src={TeleIcon}></Icon>
         </IconWrap>
-        <IconWrap href="https://telegram.org/">
+        <IconWrap href="https://twitter.com/nearmintxyz">
           <Icon src={DisIcon}></Icon>
         </IconWrap>
       </FooterContainer>

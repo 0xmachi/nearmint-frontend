@@ -19,6 +19,10 @@ import {
 } from './HeroElements'
 
 const HeroSection = () => {
+  const handleOnClickNavLink = () => {
+    window.open('/farms')
+  }
+
   return (
     <>
       <HeroContainer>
@@ -29,7 +33,7 @@ const HeroSection = () => {
                 <Heading>Protocol Treasury Fundraising on NEAR</Heading>
                 <SubTitle>NEARmint is bringing protocol-owned-liquidity (PoL) to the NEAR ecosystem by hosting Community Farming events.</SubTitle>
                 <BtnWrap>
-                  <Button src={ButtonImg} alt="Button"/>
+                  <Button src={ButtonImg} alt="Button" onClick={handleOnClickNavLink}/>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
