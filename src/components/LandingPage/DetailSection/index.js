@@ -12,6 +12,10 @@ import {
 } from "./DetailElements";
 
 const DetailSection = () => {
+  const handleOnClickNavLink = () => {
+    window.open('/farms')
+  }
+
   return (
     <DetailContainer>
       <DetailWrapper>
@@ -21,7 +25,7 @@ const DetailSection = () => {
             We support project sustainable fundraising for the NEAR Ecosystem
           </Heading>
           <BtnWrap>
-            <Button>Learn more</Button>
+            <Button onClick={handleOnClickNavLink}>Learn more</Button>
           </BtnWrap>
           {/* TODO: */}
           {/* <BtnWrap>
