@@ -293,6 +293,11 @@ const FarmDetails = () => {
     setDepositAmount(userLPBal)
   }, [address, wETHNearLPTokenContract])
 
+  const handleOnChangeAmt = useCallback(async (event) => {
+    const userSetAmt = event.target.value
+    setDepositAmount(userSetAmt)
+  }, [])
+
   useEffect(() => {
     fetchContractsInfos();
   }, [fetchContractsInfos]);
@@ -378,7 +383,7 @@ const FarmDetails = () => {
                   <SmallButton onClick={handleSetMax}>Max</SmallButton>
                 </InputTop>
                 <HStack>
-                  <Input type="text" placeholder="$10" value={depositAmount} />
+                  <Input type="number" placeholder="10" value={depositAmount} onChange={handleOnChangeAmt} />
                   <Input type="text" placeholder="LP" disabled />
                 </HStack>
                 <SubmitButton onClick={handleDeposit}>Deposit</SubmitButton>
