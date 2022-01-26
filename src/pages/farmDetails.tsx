@@ -133,9 +133,9 @@ export const BottomButtons = styled.div`
 `;
 
 export const NButton = styled.button`
-  background: transparent;
+  background: ${(props) => (props.hilight ? 'white' : "transparent")};
   border: 1.5px solid #ffffff;
-  color: #fcfcfd;
+  color: ${(props) => (props.hilight ? 'black' : "#fcfcfd")};
   padding: 1em 2em;
   min-width: 130px;
   font-size: 14px;
@@ -241,10 +241,17 @@ export const SubmitButton = styled.button`
   border: none;
   margin-top: 100px;
 `;
+
+enum TAB_STATE {
+  Deposit,
+  Withdraw
+};
+
 const FarmDetails = () => {
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
-  const [depositAmount, setDepositAmount] = useState(1)
+  const [depositAmount, setDepositAmount] = useState(1);
+  const [tabState, setTabState] = useState(TAB_STATE.Deposit)
 
   // web3 stuff
   const { provider, address, connected } = useWeb3Context();
@@ -375,10 +382,18 @@ const FarmDetails = () => {
           </ProgressBar>
           <FormSection>
             <FormTopButton>
-              <NButton>Deposit</NButton>
-              <NButton>Withdraw</NButton>
+              <NButton 
+                onClick={() => setTabState(TAB_STATE.Deposit)} 
+                hilight={tabState === TAB_STATE.Deposit}>
+                  Deposit
+              </NButton>
+              <NButton 
+                onClick={() => setTabState(TAB_STATE.Withdraw)}
+                hilight={tabState === TAB_STATE.Withdraw}>
+                Withdraw</NButton>
             </FormTopButton>
-            <Form>
+            {
+              tabState === TAB_STATE.Deposit && <Form>
               <FormWrapper>
                 <InputHead>LP Tokens</InputHead>
                 <Input type="text" placeholder="wETH - USDT" disabled />
@@ -393,6 +408,24 @@ const FarmDetails = () => {
                 <SubmitButton onClick={handleDeposit}>Deposit</SubmitButton>
               </FormWrapper>
             </Form>
+           }
+           {
+              tabState === TAB_STATE.Withdraw && <Form>
+              <FormWrapper>
+                <InputHead>LP Tokens</InputHead>
+                <Input type="text" placeholder="wETH - USDT" disabled />
+                <InputTop>
+                  <InputHead>Amount</InputHead>
+                  <SmallButton onClick={handleSetMax}>Max</SmallButton>
+                </InputTop>
+                <HStack>
+                  <Input type="number" placeholder="10" value={depositAmount} onChange={handleOnChangeAmt} />
+                  <Input type="text" placeholder="LP" disabled />
+                </HStack>
+                <SubmitButton onClick={() => {}}>Withdraw</SubmitButton>
+              </FormWrapper>
+            </Form>
+           }
           </FormSection>
         </Wrapper>
       </LiveFarmContainer>
