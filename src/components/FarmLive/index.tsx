@@ -23,7 +23,7 @@ import {
 } from "./LiveFarmingElements";
 
 const LiveFarming = () => {
-  const [totalDeposits, setTotalDeposits] = useState(0);
+  const [totalDeposits, setTotalDeposits] = useState('0');
   const [totalUsers, setTotalUsers] = useState(0);
 
   // web3 stuff
@@ -55,7 +55,7 @@ const LiveFarming = () => {
       currentTotalDeposits += parseFloat(userDepositsStr);
     }
 
-    setTotalDeposits(currentTotalDeposits);
+    setTotalDeposits(currentTotalDeposits.toFixed(2));
   }, [connected, soloFarmContract]);
 
   useEffect(() => {

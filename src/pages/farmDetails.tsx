@@ -16,6 +16,7 @@ import { ethers } from "ethers";
 import { addresses, networkID } from "../constants";
 import SoloFarmAbi from "../abi/contracts/SoloFarm.sol/SoloFarm.json";
 import Erc20Abi from "../abi/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
+import { timeout } from "../helpers";
 
 export const LiveFarmContainer = styled.div`
   background: #131530;
@@ -85,6 +86,8 @@ export const Box = styled.div`
   background-image: url(${BackgroundImage});
   background-repeat: no-repeat;
   background-position: center;
+  /* padding-left: 10px;
+  padding-right: 10px; */
 `;
 
 export const BoxHeader = styled.p`
@@ -100,6 +103,7 @@ export const BoxDesc = styled.p`
   color: white;
   font-size: 34px;
   font-weight: 700;
+  text-align: center;
 `;
 
 export const LongBox = styled.div`
@@ -141,6 +145,11 @@ export const NButton = styled.button`
   font-size: 14px;
   font-weight: 600;
 `;
+
+export const NText = styled.div`
+  color: "#fcfcfd",
+  font-size: 14px;
+`
 
 export const ProgressBar = styled.div`
   width: 100%;
@@ -245,11 +254,12 @@ export const SubmitButton = styled.button`
 enum TAB_STATE {
   Deposit,
   Withdraw,
+  Loading
 }
 
 const FarmDetails = () => {
-  const [totalDeposits, setTotalDeposits] = useState(0);
-  const [userDeposits, setUserDeposits] = useState(0);
+  const [totalDeposits, setTotalDeposits] = useState('0');
+  const [userDeposits, setUserDeposits] = useState('0');
   const [totalUsers, setTotalUsers] = useState(0);
   const [depositAmount, setDepositAmount] = useState(1);
   const [withdrawAmount, setWithdrawAmount] = useState(1);
@@ -287,7 +297,7 @@ const FarmDetails = () => {
     const currentUserDepositsStr = ethers.utils.formatEther(
       currentUserDepositsBG
     );
-    setUserDeposits(parseFloat(currentUserDepositsStr));
+    setUserDeposits(parseFloat(currentUserDepositsStr).toFixed(2));
 
     // get what all users deposited
     const usersLength = await soloFarmContract.getUsersCount();
@@ -302,12 +312,18 @@ const FarmDetails = () => {
       currentTotalDeposits += parseFloat(userDepositsStr);
     }
 
-    setTotalDeposits(currentTotalDeposits);
+    setTotalDeposits(currentTotalDeposits.toFixed(2));
   }, [address, connected, soloFarmContract]);
 
   const handleDeposit = useCallback(async () => {
+    setTabState(TAB_STATE.Loading)
+    // https://ethereum.stackexchange.com/questions/86928/does-the-approve-function-on-an-erc20-token-need-to-be-run-once-or-before-every/86936
+    await wETHNearLPTokenContract.approve(addresses[networkID].SOLO_FARM_ADDRESS, '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
+    // const event = wETHNearLPTokenContract.Approval()
+    await timeout(1000)
     await soloFarmContract.deposit(depositAmount);
-  }, [depositAmount, soloFarmContract]);
+    setTabState(TAB_STATE.Deposit)
+  }, [depositAmount, soloFarmContract, wETHNearLPTokenContract]);
 
   const handleWithdraw = useCallback(async () => {
     await soloFarmContract.withdraw(withdrawAmount);
@@ -348,7 +364,7 @@ const FarmDetails = () => {
     });
   
     // Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch
-    toast.info('Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch', {
+    toast.info('Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards unless you are on the beta whitelist or until full launch', {
       position: "top-left",
       autoClose: false,
       hideProgressBar: false,
@@ -358,7 +374,7 @@ const FarmDetails = () => {
       progress: undefined,
     });
   
-    toast.info('To recieve rewards, you must be on the whitelist. Please contact Nearmint on twitter to be added to whitelist', {
+    toast.info('To recieve rewards currently, you must be on the beta whitelist. Please contact Nearmint on twitter to be added to whitelist', {
       position: "top-left",
       autoClose: false,
       hideProgressBar: false,
@@ -374,7 +390,7 @@ const FarmDetails = () => {
   useEffect(() => {
     showWarnings()
     fetchContractsInfos();
-  }, [fetchContractsInfos]);
+  }, [fetchContractsInfos, showWarnings]);
 
   return (
     <Container>
@@ -504,6 +520,11 @@ const FarmDetails = () => {
                 </FormWrapper>
               </Form>
             )}
+            {tabState === TAB_STATE.Loading && (<Form>
+                <FormWrapper>
+                  <InputHead>Please approve both the approval and deposit metamask transactions. Awaiting approvals...</InputHead>
+                </FormWrapper>
+              </Form>)}
           </FormSection>
         </Wrapper>
       </LiveFarmContainer>
