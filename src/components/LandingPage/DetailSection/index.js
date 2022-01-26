@@ -25,7 +25,7 @@ const DetailSection = () => {
             We support project sustainable fundraising for the NEAR Ecosystem
           </Heading>
           <BtnWrap>
-            <Button onClick={handleOnClickNavLink}>Learn more</Button>
+            <Button onClick={handleOnClickNavLink}>Launch App ></Button>
           </BtnWrap>
           {/* TODO: */}
           {/* <BtnWrap>
