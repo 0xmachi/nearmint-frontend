@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import LiveFarming from "../components/FarmLive/index";
@@ -250,16 +250,20 @@ const FarmDetails = () => {
   const { provider, address, connected } = useWeb3Context();
   
   const signer = provider.getSigner();
-  const soloFarmContract = new ethers.Contract(
-    addresses[networkID].SOLO_FARM_ADDRESS as string,
-    SoloFarmAbi,
-    signer
-  );
-  const wETHNearLPTokenContract = new ethers.Contract(
-    addresses[networkID].WNEAR_ETH_LP_TOKEN_ADDRESS as string,
-    Erc20Abi,
-    signer
-  );
+  const soloFarmContract = useMemo(() => {
+    return new ethers.Contract(
+      addresses[networkID].SOLO_FARM_ADDRESS as string,
+      SoloFarmAbi,
+      signer
+    )
+  }, [signer]);
+  const wETHNearLPTokenContract = useMemo(() => {
+    return new ethers.Contract(
+      addresses[networkID].WNEAR_ETH_LP_TOKEN_ADDRESS as string,
+      Erc20Abi,
+      signer
+    )
+  }, [signer]);
 
   const fetchContractsInfos = useCallback(async () => {
     if (!connected) {
@@ -366,7 +370,7 @@ const FarmDetails = () => {
           <ProgressBar>
             <Header>Total Deposited: {totalDeposits} wETH-NEAR LP</Header>
             <OuterBar>
-              <InnerBar width="5%"></InnerBar>
+              <InnerBar width="1%"></InnerBar>
             </OuterBar>
           </ProgressBar>
           <FormSection>
