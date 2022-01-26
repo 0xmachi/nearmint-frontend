@@ -254,6 +254,7 @@ const FarmDetails = () => {
   const [depositAmount, setDepositAmount] = useState(1);
   const [withdrawAmount, setWithdrawAmount] = useState(1);
   const [tabState, setTabState] = useState(TAB_STATE.Deposit);
+  const [shownWarning, setShownWarning] = useState(false);
 
   // web3 stuff
   const { provider, address, connected } = useWeb3Context();
@@ -331,9 +332,13 @@ const FarmDetails = () => {
     }
   }, [tabState]);
 
-  useEffect(() => {
+  const showWarnings = useCallback(() => {
+    if (shownWarning) {
+      return
+    }
+
     toast.info('Nearmint is currently in beta', {
-      position: "top-right",
+      position: "top-left",
       autoClose: false,
       hideProgressBar: false,
       closeOnClick: true,
@@ -341,10 +346,20 @@ const FarmDetails = () => {
       draggable: true,
       progress: undefined,
     });
-
+  
     // Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch
     toast.info('Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch', {
-      position: "top-right",
+      position: "top-left",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  
+    toast.info('To recieve rewards, you must be on the whitelist. Please contact Nearmint on twitter to be added to whitelist', {
+      position: "top-left",
       autoClose: false,
       hideProgressBar: false,
       closeOnClick: true,
@@ -353,15 +368,11 @@ const FarmDetails = () => {
       progress: undefined,
     });
 
-    toast.info('To recieve rewards, you must be on the whitelist. Please contact Nearmint on twitter to be added to whitelist', {
-      position: "top-right",
-      autoClose: false,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    setShownWarning(true)
+  }, [shownWarning])
+
+  useEffect(() => {
+    showWarnings()
     fetchContractsInfos();
   }, [fetchContractsInfos]);
 
