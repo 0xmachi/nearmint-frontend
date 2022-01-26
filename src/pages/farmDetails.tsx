@@ -249,6 +249,7 @@ enum TAB_STATE {
 
 const FarmDetails = () => {
   const [totalDeposits, setTotalDeposits] = useState(0);
+  const [userDeposits, setUserDeposits] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
   const [depositAmount, setDepositAmount] = useState(1);
   const [tabState, setTabState] = useState(TAB_STATE.Deposit)
@@ -279,6 +280,12 @@ const FarmDetails = () => {
       return;
     }
 
+    // get what this user deposited
+    const currentUserDepositsBG = await soloFarmContract.deposited(address);
+    const currentUserDepositsStr = ethers.utils.formatEther(currentUserDepositsBG);
+    setUserDeposits(parseFloat(currentUserDepositsStr))
+
+    // get what all users deposited
     const usersLength = await soloFarmContract.getUsersCount();
 
     setTotalUsers(usersLength.toNumber());
@@ -292,7 +299,7 @@ const FarmDetails = () => {
     }
 
     setTotalDeposits(currentTotalDeposits);
-  }, [connected, soloFarmContract]);
+  }, [address, connected, soloFarmContract]);
   
 
   const handleDeposit = useCallback(async () => {
@@ -364,7 +371,7 @@ const FarmDetails = () => {
               </LongBox> */}
               <LongBox>
                 <LongBoxHeader>My Total Deposited</LongBoxHeader>
-                <LongBoxDesc>$10,000</LongBoxDesc>
+                <LongBoxDesc>{userDeposits} wETH-NEAR LP</LongBoxDesc>
               </LongBox>
               <BottomButtons>
                 <NButton>Website</NButton>
