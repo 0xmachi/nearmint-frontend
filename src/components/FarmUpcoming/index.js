@@ -1,4 +1,5 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
 import {
   UpcomingFarmContainer,
   Wrapper,
@@ -17,6 +18,18 @@ import {
 import CryptoImage from "../../images/cryptoImage.png";
 
 const UpcomingFarm = () => {
+  const handleOnClickEarlyAccess = () => {
+    toast.info('For requesting early access to our upcoming farms, direct message us on twitter or post on our discord', {
+      position: "top-left",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
     <>
       <UpcomingFarmContainer>
@@ -34,7 +47,7 @@ const UpcomingFarm = () => {
                   bringing....Read More
                 </CryptoDesc>
                 <ButtonWrapper>
-                  <Button to="#">Get Early Access ></Button>
+                  <Button to="#" onClick={handleOnClickEarlyAccess}>Get Early Access ></Button>
                 </ButtonWrapper>
               </CryptoDetails>
             </CryptoCell>
