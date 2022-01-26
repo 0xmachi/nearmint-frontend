@@ -243,6 +243,7 @@ export const SubmitButton = styled.button`
 const FarmDetails = () => {
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
+  const [depositAmount, setDepositAmount] = useState(1)
 
   // web3 stuff
   const { provider, address, connected } = useWeb3Context();
@@ -275,6 +276,15 @@ const FarmDetails = () => {
 
     setTotalDeposits(currentTotalDeposits);
   }, [connected, soloFarmContract]);
+  
+
+  const handleDeposit = useCallback(async () => {
+    await soloFarmContract.deposit(depositAmount)
+  }, [depositAmount, soloFarmContract])
+
+  const handleSetMax = useCallback(async () => {
+    console.log("set max");
+  }, [])
 
   useEffect(() => {
     fetchContractsInfos();
@@ -358,10 +368,13 @@ const FarmDetails = () => {
                 <Input type="text" placeholder="wETH - USDT" disabled />
                 <InputTop>
                   <InputHead>Amount</InputHead>
-                  <SmallButton>Max</SmallButton>
+                  <SmallButton onClick={handleSetMax}>Max</SmallButton>
                 </InputTop>
-                <Input type="text" placeholder="$10" />
-                <SubmitButton>Deposit</SubmitButton>
+                <HStack>
+                  <Input type="text" placeholder="$10" value={depositAmount} />
+                  <Input type="text" placeholder="LP" disabled />
+                </HStack>
+                <SubmitButton onClick={handleDeposit}>Deposit</SubmitButton>
               </FormWrapper>
             </Form>
           </FormSection>
