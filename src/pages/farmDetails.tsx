@@ -15,6 +15,7 @@ import BackgroundImage from "../images/BoxBackground.svg";
 import { ethers } from "ethers";
 import { addresses, networkID } from "../constants";
 import SoloFarmAbi from "../abi/contracts/SoloFarm.sol/SoloFarm.json";
+import Erc20Abi from "../abi/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
 
 export const LiveFarmContainer = styled.div`
   background: #131530;
@@ -254,6 +255,11 @@ const FarmDetails = () => {
     SoloFarmAbi,
     signer
   );
+  const wETHNearLPTokenContract = new ethers.Contract(
+    addresses[networkID].WNEAR_ETH_LP_TOKEN_ADDRESS as string,
+    Erc20Abi,
+    signer
+  );
 
   const fetchContractsInfos = useCallback(async () => {
     if (!connected) {
@@ -283,8 +289,9 @@ const FarmDetails = () => {
   }, [depositAmount, soloFarmContract])
 
   const handleSetMax = useCallback(async () => {
-    console.log("set max");
-  }, [])
+    const userLPBal = await wETHNearLPTokenContract.balanceOf(address)
+    setDepositAmount(userLPBal)
+  }, [address, wETHNearLPTokenContract])
 
   useEffect(() => {
     fetchContractsInfos();
