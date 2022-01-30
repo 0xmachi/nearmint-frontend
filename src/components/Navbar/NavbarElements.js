@@ -70,7 +70,7 @@ export const NavItem = styled.li`
   height: 80px;
 `;
 
-export const NavLinks = styled(LinkScroll)`
+export const NavLinks = styled(LinkR)`
   color: #777e90;
   display: flex;
   align-items: center;
