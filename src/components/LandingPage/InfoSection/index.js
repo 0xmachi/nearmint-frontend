@@ -32,11 +32,11 @@ const HeroSection = () => {
               <TextWrapper>
                 <Heading>Core Features</Heading>
                 <SubRow>
-                  <SubTitle>Derisked Yield Swap Fundraising</SubTitle>
-                  <Description>Swap yield, not assets.</Description>
+                  <SubTitle>Lossless  Yield Swap Fundraising</SubTitle>
+                  <Description>Mint tokens with your Yield, not your assets</Description>
                 </SubRow>
                 <SubRow>
-                  <SubTitle>Mint leading early stage projects</SubTitle>
+                  <SubTitle>Fully Withdrawable Deposits</SubTitle>
                   <Description>Protocols exclusively building for NEAR and Aurora</Description>
                 </SubRow>
                 <SubRow>

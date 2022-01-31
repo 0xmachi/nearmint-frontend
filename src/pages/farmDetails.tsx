@@ -149,7 +149,7 @@ export const NButton = styled.button`
 export const NText = styled.div`
   color: "#fcfcfd",
   font-size: 14px;
-`
+`;
 
 export const ProgressBar = styled.div`
   width: 100%;
@@ -254,12 +254,12 @@ export const SubmitButton = styled.button`
 enum TAB_STATE {
   Deposit,
   Withdraw,
-  Loading
+  Loading,
 }
 
 const FarmDetails = () => {
-  const [totalDeposits, setTotalDeposits] = useState('0');
-  const [userDeposits, setUserDeposits] = useState('0');
+  const [totalDeposits, setTotalDeposits] = useState("0");
+  const [userDeposits, setUserDeposits] = useState("0");
   const [totalUsers, setTotalUsers] = useState(0);
   const [depositAmount, setDepositAmount] = useState(1);
   const [withdrawAmount, setWithdrawAmount] = useState(1);
@@ -316,13 +316,16 @@ const FarmDetails = () => {
   }, [address, connected, soloFarmContract]);
 
   const handleDeposit = useCallback(async () => {
-    setTabState(TAB_STATE.Loading)
+    setTabState(TAB_STATE.Loading);
     // https://ethereum.stackexchange.com/questions/86928/does-the-approve-function-on-an-erc20-token-need-to-be-run-once-or-before-every/86936
-    await wETHNearLPTokenContract.approve(addresses[networkID].SOLO_FARM_ADDRESS, '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
+    await wETHNearLPTokenContract.approve(
+      addresses[networkID].SOLO_FARM_ADDRESS,
+      "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    );
     // const event = wETHNearLPTokenContract.Approval()
-    await timeout(1000)
+    await timeout(1000);
     await soloFarmContract.deposit(depositAmount);
-    setTabState(TAB_STATE.Deposit)
+    setTabState(TAB_STATE.Deposit);
   }, [depositAmount, soloFarmContract, wETHNearLPTokenContract]);
 
   const handleWithdraw = useCallback(async () => {
@@ -339,42 +342,24 @@ const FarmDetails = () => {
     setWithdrawAmount(userDepositedBal);
   }, [address, soloFarmContract]);
 
-  const handleOnChangeAmt = useCallback(async (event) => {
-    const userSetAmt = event.target.value;
-    if (tabState === TAB_STATE.Withdraw) {
-      setWithdrawAmount(userSetAmt);
-    } else if (tabState === TAB_STATE.Deposit) {
-      setDepositAmount(userSetAmt);
-    }
-  }, [tabState]);
+  const handleOnChangeAmt = useCallback(
+    async (event) => {
+      const userSetAmt = event.target.value;
+      if (tabState === TAB_STATE.Withdraw) {
+        setWithdrawAmount(userSetAmt);
+      } else if (tabState === TAB_STATE.Deposit) {
+        setDepositAmount(userSetAmt);
+      }
+    },
+    [tabState]
+  );
 
   const showWarnings = useCallback(() => {
     if (shownWarning) {
-      return
+      return;
     }
 
-    toast.info('Nearmint is currently in beta', {
-      position: "top-left",
-      autoClose: false,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  
-    // Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch
-    toast.info('Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards unless you are on the beta whitelist or until full launch', {
-      position: "top-left",
-      autoClose: false,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  
-    toast.info('To recieve rewards currently, you must be on the beta whitelist. Please contact Nearmint on twitter to be added to whitelist', {
+    toast.info("Nearmint is currently in beta", {
       position: "top-left",
       autoClose: false,
       hideProgressBar: false,
@@ -384,11 +369,38 @@ const FarmDetails = () => {
       progress: undefined,
     });
 
-    setShownWarning(true)
-  }, [shownWarning])
+    // Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards currently until full launch
+    toast.info(
+      "Rewards are currently off, you may deposit and withdraw your LP tokens but you will not recieve rewards unless you are on the beta whitelist or until full launch",
+      {
+        position: "top-left",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+
+    toast.info(
+      "To recieve rewards currently, you must be on the beta whitelist. Please contact Nearmint on twitter to be added to whitelist",
+      {
+        position: "top-left",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+
+    setShownWarning(true);
+  }, [shownWarning]);
 
   useEffect(() => {
-    showWarnings()
+    showWarnings();
     fetchContractsInfos();
   }, [fetchContractsInfos, showWarnings]);
 
@@ -403,10 +415,11 @@ const FarmDetails = () => {
             <Column>
               <Header>About NEARmint</Header>
               <CryptoDesc>
-                NEARmint is focused on bringing DeFi 2.0 protocol-owned-
-                liquidity (PoL) to the NEAR ecosystem through a mechanism called
-                Community Farming where users trade their LP rewards for tokens
-                at prelaunch prices.
+                NEARmint is an early-stage lossless fundraising platform
+                allowing users to mint tokens in exchange for their LP yield, we
+                call this Yield Swap Fundraising (YSF). Projects using NEARmint
+                take the redirected yield to build a diverse sustainable
+                treasury.
               </CryptoDesc>
               <CryptoDesc>
                 NEARmint exists to provide NEAR ecosystem projects the ability
@@ -433,8 +446,8 @@ const FarmDetails = () => {
                   <BoxDesc>{totalDeposits} wETH-NEAR LP</BoxDesc>
                 </Box>
                 <Box>
-                  <BoxHeader>Issues Points</BoxHeader>
-                  <BoxDesc>$0.05</BoxDesc>
+                  <BoxHeader>Issues Price</BoxHeader>
+                  <BoxDesc>($.16)</BoxDesc>
                 </Box>
               </HStack>
               {/* <LongBox>
@@ -520,11 +533,16 @@ const FarmDetails = () => {
                 </FormWrapper>
               </Form>
             )}
-            {tabState === TAB_STATE.Loading && (<Form>
+            {tabState === TAB_STATE.Loading && (
+              <Form>
                 <FormWrapper>
-                  <InputHead>Please approve both the approval and deposit metamask transactions. Awaiting approvals...</InputHead>
+                  <InputHead>
+                    Please approve both the approval and deposit metamask
+                    transactions. Awaiting approvals...
+                  </InputHead>
                 </FormWrapper>
-              </Form>)}
+              </Form>
+            )}
           </FormSection>
         </Wrapper>
       </LiveFarmContainer>
