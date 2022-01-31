@@ -422,20 +422,22 @@ const FarmDetails = () => {
                 treasury.
               </CryptoDesc>
               <CryptoDesc>
-                NEARmint exists to provide NEAR ecosystem projects the ability
-                to design their token economics in a way that is sustainable,
-                for the long term. This is important for the ecosystem,
-                protocols and users who truly believe in a decentralized vision.
-                We want NEARmint to be seen as the gold stamp of new protocols
-                coming into the ecosystem and be a safeguard to the community
-                against predatory token economics and release schedules.
+                What’s Yield Swap Fundraising (YSF)? Well, in short, users
+                exchange LP yield to mint tokens and support early-stage
+                projects . Typically a YSF event will run for less than a week,
+                this is determined by the LP yield and the total amount of
+                capital committed against the number of tokens being minted. YSF
+                is a lossless way for users to participate in new projects, as
+                you are not selling your base assets.
               </CryptoDesc>
               <CryptoDesc>
-                How do we help to do this? Protocols that forgo instant TVL
-                through high emissions in exchange for PoL (protocol-owned
-                liquidity) are ones that are operating with long-term visions.
-                Good for the ecosystem, good for DeFi and even better for our
-                users!
+                NEARmint exists to provide NEAR ecosystem projects the ability
+                to design their token economics in a way that is sustainable,
+                for the long term. For users, it’s a lossless way to redirect
+                yield and capture the value from early-stage projects. We want
+                NEARmint to be seen as the gold stamp of new protocols coming
+                into the ecosystem and be a safeguard to the community against
+                predatory token economics and release schedules.
               </CryptoDesc>
             </Column>
             <Column>
