@@ -30,8 +30,8 @@ const HeroSection = () => {
           <HeroRow>
             <Column1>
               <TextWrapper>
-                <Heading>Protocol Treasury Fundraising on NEAR</Heading>
-                <SubTitle>NEARmint is bringing protocol-owned-liquidity (PoL) to the NEAR ecosystem by hosting Community Farming events.</SubTitle>
+                <Heading>Lossless Fundraising on NEAR & Aurora</Heading>
+                <SubTitle>- Use your LP positions to Mint early stage project tokens <br/> - Support your Favorite Teams by participating in Yield Swap Financing</SubTitle>
                 <BtnWrap>
                   <Button src={ButtonImg} alt="Button" onClick={handleOnClickNavLink}/>
                 </BtnWrap>
