@@ -52,11 +52,11 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
   }, [connected]);
 
   const handleOnClickNavLink = () => {
-    window.location.replace('https://twitter.com/nearmintxyz')
+    window.open('https://twitter.com/nearmintxyz', "_blank")
   }
 
   const handleOnClickSupportLink = () => {
-    window.location.replace('https://t.me/nearmintxyz')
+    window.open('https://t.me/nearmintxyz', "_blank")
   }
 
   return (
@@ -69,16 +69,16 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
           <VLine />
           <NavMenu>
             <NavItem>
-              <NavLinks to="/details/1">About</NavLinks>
+              <NavLinks to="?#core-features">About</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="#">Docs</NavLinks>
+              <NavLinks to="#" onClick={() => window.open('https://medium.com/@nearmintxyz', "_blank")}>Docs</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="#" onClick={handleOnClickNavLink}>Socials</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="#" onClick={handleOnClickNavLink}>Apply</NavLinks>
+              <NavLinks to="#" onClick={() => window.open('https://forms.gle/B5BWvHWRSGrg3vc46', "_blank")}>Apply</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="#" onClick={handleOnClickSupportLink}>Support</NavLinks>

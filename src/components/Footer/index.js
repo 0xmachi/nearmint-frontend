@@ -1,6 +1,8 @@
 import React from "react";
 import TeleIcon from "../../images/telegramIcon.png"
 import DisIcon from "../../images/discordIcon.png"
+import TwitterIcon from "../../images/twitterIcon.jpeg"
+import Twitter2Icon from "../../images/twitterIcon2.png"
 
 import {
   FooterContainer,
@@ -12,11 +14,11 @@ const Footer = () => {
   return (
     <>
       <FooterContainer>
-        <IconWrap href="https://twitter.com/nearmintxyz">
+        <IconWrap href="t.me/nearmintxyz">
           <Icon src={TeleIcon}></Icon>
         </IconWrap>
         <IconWrap href="https://twitter.com/nearmintxyz">
-          <Icon src={DisIcon}></Icon>
+          <Icon src={Twitter2Icon} style={{height: 27}}></Icon>
         </IconWrap>
       </FooterContainer>
     </>

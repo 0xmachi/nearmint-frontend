@@ -20,7 +20,7 @@ import {
 
 const HeroSection = () => {
   const handleOnClickNavLink = () => {
-    window.open('https://twitter.com/nearmintxyz', "_blank")
+    window.open('https://medium.com/@nearmintxyz/beta-launch-and-airdrop-announcement-68853c6daa3c', "_blank")
   }
   
   return (
@@ -30,7 +30,7 @@ const HeroSection = () => {
           <HeroRow>
             <Column1>
               <TextWrapper>
-                <Heading>Core Features</Heading>
+                <Heading id="core-features">Core Features</Heading>
                 <SubRow>
                   <SubTitle>Lossless  Yield Swap Fundraising</SubTitle>
                   <Description>Mint tokens with your Yield, not your assets</Description>
