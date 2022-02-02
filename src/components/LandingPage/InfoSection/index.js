@@ -26,7 +26,7 @@ const HeroSection = () => {
   
   return (
     <>
-      <HeroContainer>
+      <HeroContainer id="corefeatures">
         <HeroWrapper>
           <HeroRow>
             <Column1>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img id="corefeatures" src={ReactLogo} alt="Logo" />
+                <Img src={ReactLogo} alt="Logo" />
               </ImgWrap>
               <BtnWrap>
                 <Button onClick={handleOnClickNavLink}>How it Works</Button>
