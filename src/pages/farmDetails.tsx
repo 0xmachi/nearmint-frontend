@@ -383,18 +383,18 @@ const FarmDetails = () => {
       }
     );
 
-    toast.info(
-      "To recieve rewards currently, you must be on the beta whitelist. Please contact Nearmint on twitter to be added to whitelist",
-      {
-        position: "top-left",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }
-    );
+    // toast.info(
+    //   "To recieve rewards currently, you must be on the beta whitelist. Please contact Nearmint on twitter to be added to whitelist",
+    //   {
+    //     position: "top-left",
+    //     autoClose: false,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //   }
+    // );
 
     setShownWarning(true);
   }, [shownWarning]);
