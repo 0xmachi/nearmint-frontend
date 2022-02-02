@@ -17,6 +17,7 @@ import {
   NavRight,
   WalletBtn,
   WalletBtnV2,
+  NavHashLinks,
 } from "./NavbarElements";
 import { useAddress, useWeb3Context } from "../../hooks/web3Context";
 import { shorten } from "../../helpers";
@@ -69,7 +70,7 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
           <VLine />
           <NavMenu>
             <NavItem>
-              <NavLinks to="?#core-features">About</NavLinks>
+              <NavHashLinks to="#corefeatures">About</NavHashLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="#" onClick={() => window.open('https://medium.com/@nearmintxyz', "_blank")}>Docs</NavLinks>

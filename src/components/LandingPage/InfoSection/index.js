@@ -31,7 +31,7 @@ const HeroSection = () => {
           <HeroRow>
             <Column1>
               <TextWrapper>
-                <Heading id="core-features">Core Features</Heading>
+                <Heading>Core Features</Heading>
                 <SubRow>
                   <SubTitle>Lossless  Yield Swap Fundraising</SubTitle>
                   <Description>Mint tokens with your Yield, not your assets</Description>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={ReactLogo} alt="Logo" />
+                <Img id="corefeatures" src={ReactLogo} alt="Logo" />
               </ImgWrap>
               <BtnWrap>
                 <Button onClick={handleOnClickNavLink}>How it Works</Button>

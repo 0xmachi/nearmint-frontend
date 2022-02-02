@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
+import { HashLink } from 'react-router-hash-link';
 
 export const Nav = styled.nav`
   background: rgba(19, 21, 48, 0);
@@ -71,6 +72,21 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinks = styled(LinkR)`
+  color: #777e90;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 0 1.35rem;
+  height: 100%;
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 3px solid #01bf71;
+  }
+`;
+
+export const NavHashLinks = styled(HashLink)`
   color: #777e90;
   display: flex;
   align-items: center;
