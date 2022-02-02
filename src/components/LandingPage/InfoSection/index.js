@@ -19,8 +19,9 @@ import {
 } from "./InfoElements";
 
 const HeroSection = () => {
-  const handleOnClickNavLink = () => {
+  const handleOnClickNavLink = (event) => {
     window.open('https://medium.com/@nearmintxyz/beta-launch-and-airdrop-announcement-68853c6daa3c', "_blank")
+    event.preventDefault()
   }
   
   return (
