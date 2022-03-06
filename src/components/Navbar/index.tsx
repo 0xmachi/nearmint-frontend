@@ -73,7 +73,7 @@ const Navbar = ({ showConnect, showLaunchApp }: Props) => {
               <NavHashLinks to="#corefeatures">About</NavHashLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="#" onClick={() => window.open('https://medium.com/@nearmintxyz', "_blank")}>Docs</NavLinks>
+              <NavLinks to="#" onClick={() => window.open('https://nearmintxyz.gitbook.io/nearmint/overview/introduction', "_blank")}>Docs</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="#" onClick={handleOnClickNavLink}>Socials</NavLinks>

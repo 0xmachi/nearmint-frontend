@@ -20,7 +20,7 @@ import {
 
 const HeroSection = () => {
   const handleOnClickNavLink = (event) => {
-    window.open('https://medium.com/@nearmintxyz/beta-launch-and-airdrop-announcement-68853c6daa3c', "_blank")
+    window.open('https://nearmintxyz.gitbook.io/nearmint/overview/introduction', "_blank")
     event.preventDefault()
   }
   
